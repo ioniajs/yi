@@ -9,11 +9,13 @@
       "name": "View",
       "style": {
         "position": "relative",
-        "width": "100%",
-        "height": "1215px",
+        "width": "1920px",
+        "height": "1211px",
         "backgroundImage": "http://r.photo.store.qq.com/psb?/V14dALyK4bMoWS/cfA9nq49UyTIPQjesI0SktmLGS373fN4SUQSr6klDsM!/r/dDwBAAAAAAAA",
         "backgroundRepeat": "no-repeat",
-        "backgroundSize": "100% 100%"
+        "backgroundSize": "100% 100%",
+        "top": "4px",
+        "left": "0px"
       },
       "props": {
         "lazy": true
@@ -50,7 +52,8 @@
                 "blank": true,
                 "link": "https://lol.qq.com"
               },
-              "el": "wc6"
+              "el": "wc6",
+              "hide": true
             },
             {
               "name": "Text",
@@ -68,12 +71,49 @@
                 "fontWeight": "normal",
                 "color": "rgba(248,231,28,1)"
               },
-              "el": "wc7"
+              "el": "wc7",
+              "hide": true
             }
           ],
-          "el": "wc5"
+          "el": "wc5",
+          "hide": true
+        },
+        {
+          "name": "Text",
+          "style": {
+            "position": "relative",
+            "width": "200px",
+            "left": "212px",
+            "top": "-372px",
+            "height": "-56px"
+          },
+          "props": {
+            "text": "默认文本",
+            "fontSize": "24px",
+            "lineHeight": "36px",
+            "textAlign": "center",
+            "lazy": true
+          },
+          "el": "wc14",
+          "hide": true
+        },
+        {
+          "name": "View",
+          "style": {
+            "position": "relative",
+            "width": "1916px",
+            "height": "120px",
+            "left": "-182px",
+            "top": "666px"
+          },
+          "props": {
+            "lazy": true
+          },
+          "el": "wc15",
+          "hide": true
         }
-      ]
+      ],
+      "hide": true
     },
     {
       "name": "Iframe",
@@ -114,7 +154,9 @@
             "width": "auto",
             "marginLeft": "auto",
             "marginRight": "auto",
-            "marginTop": "30px"
+            "marginTop": "30px",
+            "left": "0px",
+            "top": "-26px"
           },
           "props": {
             "text": "这是下面这个元素的标题",
@@ -125,7 +167,8 @@
             "color": "rgba(182,36,54,1)",
             "fontWeight": "bold"
           },
-          "el": "wc11"
+          "el": "wc11",
+          "hide": true
         },
         {
           "name": "View",
@@ -141,7 +184,8 @@
           "children": [],
           "hide": true
         }
-      ]
+      ],
+      "hide": true
     }
   ]
 }
