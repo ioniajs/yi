@@ -23,6 +23,7 @@ import { Layout, Button, Slider, Menu, message } from "antd";
 import Guides from "@scena/react-guides";
 import style from "./style/index.less";
 import styleBd from "./style/changeBox.less";
+import Header from "./components/Header";
 
 const IsMacOS = navigator.platform.match("Mac");
 const EnumId = { root: "root" }; // 画布id
@@ -762,24 +763,25 @@ const Board = () => {
 
   return (
     <Layout className={style.main}>
-      <Layout.Sider theme="light">
-        <div
-          className={[style.mainSider, style.menu].join(" ")}
-          onClick={clearChooseCmp}
-        >
-          <CompMenu chooseDragComp={chooseDragComp} />
-        </div>
-        <div className={style.mainSider} onMouseUp={clearChooseCmp}>
-          <PageTree
-            handleClick={handleClick}
-            checkedKeysList={checkedKeysList}
-            expandedKeys={expandedKeys}
-            triggerShowEl={triggerShowEl}
-          />
-        </div>
-      </Layout.Sider>
+      <Header />
       <Layout>
-        <Layout.Header className={style.header}>
+        <Layout.Sider theme="light">
+          <div
+            className={[style.mainSider, style.menu].join(" ")}
+            onClick={clearChooseCmp}
+          >
+            <CompMenu chooseDragComp={chooseDragComp} />
+          </div>
+          <div className={style.mainSider} onMouseUp={clearChooseCmp}>
+            <PageTree
+              handleClick={handleClick}
+              checkedKeysList={checkedKeysList}
+              expandedKeys={expandedKeys}
+              triggerShowEl={triggerShowEl}
+            />
+          </div>
+        </Layout.Sider>
+        {/* <Layout.Header className={style.header}>
           <div className={style.headerLeft}>
             <Slider
               marks={SliderMarks}
@@ -792,7 +794,7 @@ const Board = () => {
           <Button type="primary" className={style.headerBtn} onClick={showPage}>
             预览
           </Button>
-        </Layout.Header>
+        </Layout.Header> */}
         <Layout className={style.paintingLayout}>
           <Layout className={style.flex1}>
             <Guides
