@@ -186,6 +186,36 @@
         }
       ],
       "hide": true
+    },
+    {
+      "name": "View",
+      "style": {
+        "position": "relative",
+        "width": "1920px",
+        "height": "563px",
+        "left": "0px"
+      },
+      "props": {
+        "lazy": true
+      },
+      "el": "wc16",
+      "children": [
+        {
+          "name": "Image",
+          "style": {
+            "position": "relative",
+            "width": "589px",
+            "height": "563px",
+            "marginTop": "0px"
+          },
+          "props": {
+            "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
+            "blank": true,
+            "lazy": true
+          },
+          "el": "wc18"
+        }
+      ]
     }
   ]
 }
