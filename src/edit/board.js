@@ -3,27 +3,27 @@
  * 包含四个模块（组件菜单、组件结构树图、搭建可视区、操作属性面板）
  * 此根组件处理画布渲染逻辑，以及定义了编辑器内全局通用事件与函数
  */
-import ReactDom from "react-dom";
+import Guides from "@scena/react-guides";
+import { Layout, Menu, message } from "antd";
 import React, {
+  useCallback,
   useContext,
   useEffect,
   useRef,
-  useCallback,
   useState,
 } from "react";
+import ReactDom from "react-dom";
 import storeContext, { EditFuncContext } from "../context";
-import { Headers, DOMIN } from "../global";
+import { DOMIN, Headers } from "../global";
+import { creatPart, EnumEdit, rangeKey, searchTree } from "./common";
 import Page from "./compile";
+import ToolBar, { ToolButton } from "./components/ToolBar";
 import CompMenu from "./menu";
 import Option from "./option";
-import PageTree from "./tree";
-import { searchTree, rangeKey, creatPart, EnumEdit } from "./common";
 import { record } from "./record";
-import { Layout, Button, Slider, Menu, message } from "antd";
-import Guides from "@scena/react-guides";
-import style from "./style/index.less";
 import styleBd from "./style/changeBox.less";
-import Header from "./components/Header";
+import style from "./style/index.less";
+import PageTree from "./tree";
 
 const IsMacOS = navigator.platform.match("Mac");
 const EnumId = { root: "root" }; // 画布id
@@ -763,7 +763,21 @@ const Board = () => {
 
   return (
     <Layout className={style.main}>
-      <Header />
+      <EditFuncContext.Provider
+        value={{
+          savePage,
+          deleteNode,
+          copeNode,
+          pasteNode,
+          cutNode,
+          returnEdit,
+          resumeEdit,
+          changePosNode,
+          copyCompEl,
+        }}
+      >
+        <ToolBar />
+      </EditFuncContext.Provider>
       <Layout>
         <Layout.Sider theme="light">
           <div
