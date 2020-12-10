@@ -17,13 +17,12 @@ import storeContext, { EditFuncContext } from "../context";
 import { DOMIN, Headers } from "../global";
 import { creatPart, EnumEdit, rangeKey, searchTree } from "./common";
 import Page from "./compile";
-import ToolBar, { ToolButton } from "./components/ToolBar";
-import CompMenu from "./menu";
+import FloatToolbar from "./components/FloatToolbar";
+import Toolbar from "./components/Toolbar";
 import Option from "./option";
 import { record } from "./record";
 import styleBd from "./style/changeBox.less";
 import style from "./style/index.less";
-import PageTree from "./tree";
 
 const IsMacOS = navigator.platform.match("Mac");
 const EnumId = { root: "root" }; // 画布id
@@ -776,10 +775,11 @@ const Board = () => {
           copyCompEl,
         }}
       >
-        <ToolBar />
+        <Toolbar />
       </EditFuncContext.Provider>
       <Layout>
-        <Layout.Sider theme="light">
+        <FloatToolbar />
+        {/* <Layout.Sider theme="light">
           <div
             className={[style.mainSider, style.menu].join(" ")}
             onClick={clearChooseCmp}
@@ -794,7 +794,7 @@ const Board = () => {
               triggerShowEl={triggerShowEl}
             />
           </div>
-        </Layout.Sider>
+        </Layout.Sider> */}
         {/* <Layout.Header className={style.header}>
           <div className={style.headerLeft}>
             <Slider
@@ -811,14 +811,14 @@ const Board = () => {
         </Layout.Header> */}
         <Layout className={style.paintingLayout}>
           <Layout className={style.flex1}>
-            <Guides
+            {/* <Guides
               ref={guidesX}
               type="horizontal"
               style={guidesXStyles}
               onChangeGuides={({ guides }) => {
                 console.log(guides);
               }}
-            />
+            /> 
             <Guides
               ref={guidesY}
               type="vertical"
@@ -826,7 +826,7 @@ const Board = () => {
               onChangeGuides={({ guides }) => {
                 console.log(guides);
               }}
-            />
+            /> */}
             <div
               className={style.paintingWrap}
               ref={paintingWrap}

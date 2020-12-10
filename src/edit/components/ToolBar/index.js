@@ -35,7 +35,7 @@ export const ToolButton = ({ icon, title, onClick }) => (
   </div>
 );
 
-const ToolBar = () => {
+const Toolbar = () => {
   const {
     state: { choose },
   } = useContext(storeContext);
@@ -59,13 +59,13 @@ const ToolBar = () => {
   return (
     <div className={styles.header}>
       <div className={styles.logo}>首页</div>
-      <div className={styles.toolBar}>
+      <div className={styles.toolbar}>
         <ToolButton title="提示" icon="iconTemplatemarket" />
         <ToolButton title="源码" icon="iconSourcecode" />
         <ToolButton title="撤销" icon="iconRevokel" onClick={returnEdit} />
         <ToolButton title="恢复" icon="iconRedo" onClick={resumeEdit} />
 
-        <ToolButton title="提示" icon="iconTemplatemarket" />
+        <ToolButton title="提示" icon="iconMoretemplates" />
 
         <ToolButton title="提示" icon="iconQuote" />
 
@@ -78,4 +78,4 @@ const ToolBar = () => {
   );
 };
 
-export default ToolBar;
+export default Toolbar;

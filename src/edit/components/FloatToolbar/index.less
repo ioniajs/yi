@@ -1,0 +1,35 @@
+.floatToolbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  z-index: 99;
+  width: 50px;
+  min-height: 254px;
+  background-color: #fff;
+  box-shadow: 0px 1px 16px 0px rgba(10, 84, 170, 0.13);
+  border-radius: 25px;
+}
+
+.toolButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  &:hover {
+    color: #157ffb;
+  }
+}
+
+.toolButtonActive {
+  color: #fff;
+  background-color: #157ffb;
+  border-radius: 50%;
+  &:hover {
+    color: #fff;
+  }
+}
