@@ -12,8 +12,31 @@
   background-color: #fff;
   box-shadow: 0px 1px 16px 0px rgba(10, 84, 170, 0.13);
   border-radius: 25px;
+  .floatTool {
+    display: flex;
+    &:hover {
+      color: #157ffb;
+    }
+  }
+  span {
+    display: none;
+  }
+  &:hover {
+    width: 112px;
+    span {
+      display: block;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 38px;
+      font-size: 12px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      line-height: 38px;
+      margin-left: 5px;
+    }
+  }
 }
-
 .toolButton {
   display: flex;
   justify-content: center;
@@ -30,6 +53,46 @@
   background-color: #157ffb;
   border-radius: 50%;
   &:hover {
-    color: #fff;
+    color: #ffffff;
   }
 }
+.toolSpanActive {
+  color: #157ffb;
+}
+
+.floatModal {
+  position: absolute;
+  z-index: 98;
+  top: 70px;
+  left: 80px;
+  width: 278px;
+  height: 790px;
+  box-shadow: 0px 1px 16px 0px rgba(10, 84, 170, 0.13);
+  background-color: #ffffff;
+}
+.floatModalHeader {
+  width: auto;
+  height: 40px;
+  background-color: #333;
+}
+
+// .floatToolRightButton {
+//   display: none;
+// }
+// .floatToolRightButtonActive {
+//   display: block;
+//   z-index: 98;
+//   position: absolute;
+//   left: 110px;
+//   top: 165px;
+//   width: 47px;
+//   height: 47px;
+//   padding-top: 12px;
+//   background: #ffffff;
+//   box-shadow: 0px 1px 16px 0px rgba(10, 84, 170, 0.13);
+//   border-radius: 50%;
+//   i {
+//     margin-left: 25px;
+//     font-size: 13px;
+//   }
+// }

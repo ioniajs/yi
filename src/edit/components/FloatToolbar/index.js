@@ -1,45 +1,71 @@
 import React, { useState } from "react";
 import styles from "./index.less";
+import BasicComponents from '../components/BasicComponents'
 
 export const ToolButton = ({ active = false, icon, title, onClick }) => (
-  <div
-    className={`${styles.toolButton} ${active ? styles.toolButtonActive : ""}`}
-    onClick={onClick}
-  >
-    <i className={`iconfont ${icon}`} />
+  <div className={`${styles.floatTool}`}>
+    <div
+      className={`${styles.toolButton} ${active ? styles.toolButtonActive : ""}`}
+      onClick={onClick}
+    >
+      <i className={`iconfont ${icon}`} /> 
+    </div>
+    <span onClick={onClick} className={`${styles.toolButton} ${active ? styles.toolSpanActive : ""}`} >{title}</span>
   </div>
 );
+
+export const ToolModal = ({header}) => (
+  <>
+    <div className={`${styles.floatModalHeader}`}>
+      {header}
+    </div>
+  </>
+)
 
 const FloatToolbar = () => {
   const [active, setActive] = useState(0);
   return (
+    <>
     <div className={styles.floatToolbar}>
       <ToolButton
         icon="iconpage"
-        active={active === 0}
-        onClick={() => setActive(0)}
+        active={active === 1}
+        onClick={() => setActive(1)  }
+        title="所有分页"
       />
       <ToolButton
         icon="iconelement"
-        active={active === 1}
-        onClick={() => setActive(1)}
+        active={active === 2}
+        onClick={() => setActive(2)}
+        title="基础元件"
       />
       <ToolButton
         icon="iconComponent"
-        active={active === 2}
-        onClick={() => setActive(2)}
+        active={active === 3}
+        onClick={() => setActive(3)}
+        title="组件库"
       />
       <ToolButton
         icon="iconIconlibrary"
-        active={active === 3}
-        onClick={() => setActive(3)}
+        active={active === 4}
+        onClick={() => setActive(4)}
+        title="图标库"
       />
       <ToolButton
         icon="iconmine"
-        active={active === 4}
-        onClick={() => setActive(4)}
+        active={active === 5}
+        onClick={() => setActive(5)}
+        title="我的"
       />
     </div>
+    <div className={`${styles.floatModal}`}>
+      <ToolModal header={<BasicComponents />} />
+    </div>
+    
+    {/* <div className={` ${styles.floatToolRightButton}  ${active? styles.floatToolRightButtonActive : ""}`}>
+      <i className="iconfont iconright"></i>
+    </div> */}
+    </>
   );
 };
 

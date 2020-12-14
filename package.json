@@ -49,5 +49,13 @@
         "webpack-bundle-analyzer": "^3.7.0",
         "webpack-cli": "^3.3.11",
         "webpack-dev-server": "^3.9.0"
+    },
+    "devDependencies": {
+        "cz-conventional-changelog": "3.3.0"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
 }
