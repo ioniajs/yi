@@ -4,7 +4,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const AntdDayjsWebpackPlugin = require("antd-dayjs-webpack-plugin");
+// const AntdDayjsWebpackPlugin = require("antd-dayjs-webpack-plugin");
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { CONFIG } = require("../config");
 
@@ -110,7 +110,7 @@ const config = {
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin(), new AntdDayjsWebpackPlugin()].concat(
+  plugins: [new CleanWebpackPlugin()].concat(
     isDev
       ? [new webpack.HotModuleReplacementPlugin()]
       : [
