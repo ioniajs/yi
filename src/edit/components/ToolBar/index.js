@@ -62,7 +62,7 @@ const Toolbar = () => {
     <div className={styles.header}>
       <div className={styles.logo}>首页</div>
       <div className={styles.toolbar}>
-        <ToolButton title="提示" icon="iconTemplatemarket" />
+        {/* <ToolButton title="提示" icon="iconTemplatemarket" /> */}
         <ToolButton
           title="源码"
           icon="iconSourcecode"
@@ -71,14 +71,14 @@ const Toolbar = () => {
         <ToolButton title="撤销" icon="iconRevokel" onClick={returnEdit} />
         <ToolButton title="恢复" icon="iconRedo" onClick={resumeEdit} />
 
-        <ToolButton title="提示" icon="iconMoretemplates" />
+        {/* <ToolButton title="提示" icon="iconMoretemplates" />
 
-        <ToolButton title="提示" icon="iconQuote" />
+        <ToolButton title="提示" icon="iconQuote" /> */}
 
         <ToolButton title="画布设置" icon="iconSetup" />
         <ToolButton title="提示" icon="iconPreview" />
         <ToolButton title="保存" icon="iconsave" onClick={savePage} />
-        <ToolButton title="预览" icon="iconapplication" onClick={showPage} />
+        {/* <ToolButton title="预览" icon="iconapplication" onClick={showPage} /> */}
       </div>
     </div>
   );

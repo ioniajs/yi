@@ -45,7 +45,7 @@ const searchHistoryContent = [
 ]
 
 export default () => {
-    const [input, setInput] = useState(true)
+    const [input, setInput] = useState(false)
     return (
         <>
             <div className={`${styles.basicComponentsHeader}`}>

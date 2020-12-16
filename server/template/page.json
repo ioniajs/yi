@@ -191,8 +191,8 @@
       "name": "View",
       "style": {
         "position": "relative",
-        "width": "1920px",
-        "height": "563px",
+        "width": "1915px",
+        "height": "967px",
         "left": "0px"
       },
       "props": {
@@ -221,12 +221,14 @@
         {
           "name": "Image",
           "style": {
-            "position": "relative",
-            "width": "647px",
-            "height": "563px",
-            "marginTop": "0px",
-            "left": "1270px",
-            "top": "-565px"
+            "position": "absolute",
+            "width": "818px",
+            "height": "561px",
+            "marginTop": "0px9999",
+            "left": "1025px",
+            "top": "62px",
+            "marginBottom": "9",
+            "backgroundColor": "rgba(75,48,182,1)"
           },
           "props": {
             "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
@@ -239,11 +241,11 @@
           "name": "Image",
           "style": {
             "position": "relative",
-            "width": "569px",
-            "height": "563px",
+            "width": "845px",
+            "height": "464px",
             "marginTop": "0px",
-            "left": "700px",
-            "top": "-1127px",
+            "left": "-231px",
+            "top": "-4px",
             "overflow": "hidden"
           },
           "props": {
