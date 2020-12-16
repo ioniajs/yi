@@ -3,7 +3,6 @@
  * 包含四个模块（组件菜单、组件结构树图、搭建可视区、操作属性面板）
  * 此根组件处理画布渲染逻辑，以及定义了编辑器内全局通用事件与函数
  */
-import Guides from "@scena/react-guides";
 import { Layout, Menu, message } from "antd";
 import React, {
   useCallback,
@@ -13,6 +12,7 @@ import React, {
   useState,
 } from "react";
 import ReactDom from "react-dom";
+import Editor from "@monaco-editor/react";
 import storeContext, { EditFuncContext } from "../context";
 import { DOMIN, Headers } from "../global";
 import { creatPart, EnumEdit, rangeKey, searchTree } from "./common";
@@ -36,17 +36,6 @@ const SliderMarks = {
   100: "100%",
 };
 
-const guidesXStyles = { position: "absolute", zIndex: 99, height: 30 };
-const guidesYStyles = {
-  position: "absolute",
-  zIndex: 99,
-  width: 30,
-  height: "calc(100vh - 50px)",
-};
-
-let scrollX = 0;
-let scrollY = 0;
-
 const Board = () => {
   const { state, dispatch, forceUpdate } = useContext(storeContext);
   const stateRef = useRef(); // 暂存实时reducer
@@ -65,14 +54,13 @@ const Board = () => {
   const [paintScale, setPaintScale] = useState(0); // 画布缩放比例
   const [paintMinHeight, setPaintMinHeight] = useState(0); // 画布实际最小高度
   const [contextMenu, setContextMenu] = useState(false); // 右键菜单展示
+  const [sourceCodeMode, setSourceCodeMode] = useState(false); // 源码编辑模式
+  const [sourceCode, setSourceCode] = useState(""); // 源码
 
   // 子组件渲染需要使用的实时常量，在父组件dispatch前设置好，便于子组件重新渲染时直接读取
   const optionInputHasFocus = useRef(false); // 编辑区输入框聚焦开关（避免键盘事件与输入框默认快捷键冲突）
   const checkedKeysList = useRef(new Set()); // 侧边栏树组件选中集合
   const expandedKeys = useRef(new Set()); // 侧边栏树组件展开的集合
-
-  const guidesX = useRef(); // 水平辅助线
-  const guidesY = useRef(); // 垂直辅助线
 
   useEffect(() => {
     // 由于hooks自带闭包机制，浏览器全局事件回调函数的异步触发只能最初拿到绑定事件时注入的state
@@ -82,8 +70,6 @@ const Board = () => {
   });
 
   useEffect(() => {
-    guidesX.current?.resize();
-    guidesY.current?.resize();
     bindEditDomEvent();
   }, []);
 
@@ -134,9 +120,6 @@ const Board = () => {
 
   // 重新计算画布尺寸
   const repainting = useCallback((forceScale) => {
-    guidesX.current?.resize();
-    guidesY.current?.resize();
-
     const paintingWrapDom = paintingWrap.current;
     const shouldFoceUpdate = typeof forceScale === "number";
 
@@ -760,11 +743,25 @@ const Board = () => {
     }
   }, []);
 
+  // 查看源码
+  const changeSourceCodeMode = () => {
+    setSourceCodeMode(!sourceCodeMode);
+  };
+
+  useEffect(() => {
+    if (sourceCodeMode) {
+      const { tree, page } = stateRef.current;
+      setSourceCode(JSON.stringify(tree, null, 2));
+    }
+  }, [sourceCodeMode]);
+
   return (
     <Layout className={style.main}>
       <EditFuncContext.Provider
         value={{
+          changeSourceCodeMode,
           savePage,
+          showPage,
           deleteNode,
           copeNode,
           pasteNode,
@@ -779,6 +776,15 @@ const Board = () => {
       </EditFuncContext.Provider>
       <Layout>
         <FloatToolbar />
+        {sourceCodeMode && (
+          <Editor
+            className={style.codeEditor}
+            value={sourceCode}
+            theme="light"
+            language="json"
+            loading={<>正在加载...</>}
+          />
+        )}
         {/* <Layout.Sider theme="light">
           <div
             className={[style.mainSider, style.menu].join(" ")}
@@ -811,22 +817,6 @@ const Board = () => {
         </Layout.Header> */}
         <Layout className={style.paintingLayout}>
           <Layout className={style.flex1}>
-            {/* <Guides
-              ref={guidesX}
-              type="horizontal"
-              style={guidesXStyles}
-              onChangeGuides={({ guides }) => {
-                console.log(guides);
-              }}
-            /> 
-            <Guides
-              ref={guidesY}
-              type="vertical"
-              style={guidesYStyles}
-              onChangeGuides={({ guides }) => {
-                console.log(guides);
-              }}
-            /> */}
             <div
               className={style.paintingWrap}
               ref={paintingWrap}
