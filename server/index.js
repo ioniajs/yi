@@ -55,7 +55,7 @@ app.get('/edit', (req, res) => {
 
     res.render(path.join(__dirname, './template/index.ejs'), {
         id: 'edit',
-        title: debug ? '搭建编辑器(开发模式)' : '搭建编辑器',
+        title: debug ? '可视化编辑器(开发模式)' : '可视化编辑器',
         js: debug ? [
             `${CONFIG.HOST}:${CONFIG.DEV_SERVER_PORT}/commons.js`,
             `${CONFIG.HOST}:${CONFIG.DEV_SERVER_PORT}/main.js`

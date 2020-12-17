@@ -76,9 +76,8 @@ const Toolbar = () => {
         <ToolButton title="提示" icon="iconQuote" /> */}
 
         <ToolButton title="画布设置" icon="iconSetup" />
-        <ToolButton title="提示" icon="iconPreview" />
+        <ToolButton title="预览" icon="iconPreview" onClick={showPage} />
         <ToolButton title="保存" icon="iconsave" onClick={savePage} />
-        {/* <ToolButton title="预览" icon="iconapplication" onClick={showPage} /> */}
       </div>
     </div>
   );
