@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./index.less";
-import BasicComponents from '../components/BasicComponents'
+import BasicComponents from '../BasicComponents'
 
 export const ToolButton = ({ active = false, icon, title, onClick }) => (
   <div className={`${styles.floatTool}`}>
@@ -26,6 +26,7 @@ const FloatToolbar = () => {
   const [active, setActive] = useState(0);
   return (
     <>
+    <div>
     <div className={styles.floatToolbar}>
       <ToolButton
         icon="iconpage"
@@ -58,13 +59,16 @@ const FloatToolbar = () => {
         title="我的"
       />
     </div>
-     {active === 2 && <div className={`${styles.floatModal}`}>
-        <ToolModal header={<BasicComponents />} />
-      </div>}
-    
-    {/* <div className={` ${styles.floatToolRightButton}  ${active? styles.floatToolRightButtonActive : ""}`}>
+    <div className={` ${styles.floatToolRightButton}  ${active? styles.floatToolRightButtonActive : ""}`}>
       <i className="iconfont iconright"></i>
-    </div> */}
+    </div>
+    </div>
+     {
+     active === 2 && 
+      <div className={`${styles.floatModal}`}>
+          <ToolModal header={<BasicComponents />} />
+      </div>
+    }
     </>
   );
 };
