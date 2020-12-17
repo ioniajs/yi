@@ -58,9 +58,9 @@ const FloatToolbar = () => {
         title="我的"
       />
     </div>
-    <div className={`${styles.floatModal}`}>
-      <ToolModal header={<BasicComponents />} />
-    </div>
+     {active === 2 && <div className={`${styles.floatModal}`}>
+        <ToolModal header={<BasicComponents />} />
+      </div>}
     
     {/* <div className={` ${styles.floatToolRightButton}  ${active? styles.floatToolRightButtonActive : ""}`}>
       <i className="iconfont iconright"></i>
