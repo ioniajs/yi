@@ -10,6 +10,8 @@ const vesselComponentsTop = [
     {icon: 'iconBlock',title: '头部'},
     {icon: 'iconBlock',title: '导航'},
     {icon: 'iconBlock',title: '页脚'},
+    {icon: ' ',title: ' '},
+    {icon: ' ',title: ' '},
 
 ]
 
@@ -30,6 +32,8 @@ const basicComponents = [
     {icon: 'iconform', title: '表格'},
     {icon: 'iconlibrary', title: '文库'},
     {icon: 'iconList', title: '列表'},
+    {icon: '', title: ''},
+    {icon: '', title: ''},
 ]
 
 const searchHistoryContent = [
@@ -79,7 +83,7 @@ export default () => {
                                     {
                                        searchHistoryContent.map((value,index) => {
                                            return (
-                                            <div key={value.title} className={`${styles.searchHistoryTitle}`} >
+                                            <div key={index} className={`${styles.searchHistoryTitle}`} >
                                                 {value.title}
                                             </div>
                                            )
@@ -95,7 +99,7 @@ export default () => {
                                     {
                                        searchHistoryContent.map((value,index) => {
                                            return (
-                                            <div key={value.title}  className={`${styles.searchHistoryTitle}`} >
+                                            <div key={index}  className={`${styles.searchHistoryTitle}`} >
                                                 {value.title}
                                             </div>
                                            )
@@ -112,7 +116,7 @@ export default () => {
                                     {
                                         vesselComponentsTop.map((a,index) => {
                                             return (
-                                                <div key={a.title} className={`${styles.vesselComponentsButtonTop}`}>
+                                                <div key={index} className={`${ index === 1 ? styles.vesselComponentsButtonTop : ''}`}>
                                                     <i className={`iconfont ${a.icon}`} />
                                                     <p>{a.title}</p>
                                                 </div>
@@ -120,18 +124,6 @@ export default () => {
                                         })
                                     }
                                     </div>
-                                    {/* <div className={`${styles.vesselComponentsBottom}`}>
-                                    {
-                                        vesselComponentsBottom.map((b,index) => {
-                                            return (
-                                                <div key={b.title} className={`${styles.vesselComponentsButtonBottom}`} >
-                                                    <i className={`iconfont ${b.icon}`} />
-                                                    <p>{b.title}</p>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                    </div> */}
                                 </Panel>
                             </Collapse>
                             <Collapse>
@@ -140,7 +132,7 @@ export default () => {
                                         {
                                             basicComponents.map((c,index) => {
                                                 return (
-                                                    <div key={c.title} className={`${styles.basicComponentButton}`} >
+                                                    <div key={index} className={`${styles.basicComponentButton}`} >
                                                         <i className={`iconfont ${c.icon}`} />
                                                         <p>{c.title}</p>
                                                     </div>
@@ -151,21 +143,21 @@ export default () => {
                                 </Panel>
                             </Collapse>
                             <Collapse>
-                            <Panel header="组合元件">
-                                <div className={`${styles.combinationComponent}`} >
-                                    {
-                                        basicComponents.map((c,index) => {
-                                            return (
-                                                <div key={c.title} className={`${styles.combinationComponentButton}`} >
-                                                    <i className={`iconfont ${c.icon}`} />
-                                                    <p>{c.title}</p>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            </Panel>
-                        </Collapse>
+                                <Panel header="组合元件">
+                                    <div className={`${styles.combinationComponent}`} >
+                                        {
+                                            basicComponents.map((c,index) => {
+                                                return (
+                                                    <div key={index} className={`${styles.combinationComponentButton}`} >
+                                                        <i className={`iconfont ${c.icon}`} />
+                                                        <p>{c.title}</p>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </Panel>
+                            </Collapse>
                         </div>)
 
             }

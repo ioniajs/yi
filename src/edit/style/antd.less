@@ -1,72 +1,103 @@
-@import '~antd/dist/antd.less';
-@import './var.less';
+@import "~antd/dist/antd.less";
+@import "./var.less";
 // 此文件仅支持覆写antd样式，以及全局样式重置，不要写页面内自定义样式，非CSS模块打包，样式名即为className
 #edit {
-    overflow: hidden;
+  overflow: hidden;
 
-    * {
-        user-select: none
-    }
+  * {
+    user-select: none;
+  }
 }
 
 #root {
-    ul, li, ol, dl, p, h1, h2, h3, h4, h5, h6, img, nav { margin: 0; padding: 0; }
-    ol, ul { list-style: none; }
+  ul,
+  li,
+  ol,
+  dl,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  img,
+  nav {
+    margin: 0;
+    padding: 0;
+  }
+  ol,
+  ul {
+    list-style: none;
+  }
 }
 
 ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+  width: 4px;
+  height: 4px;
 }
 
-::-webkit-scrollbar-corner, ::-webkit-scrollbar-track {
-    background: transparent;
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background-color: rgba(0,0,0,.1);
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-::-webkit-scrollbar-corner, ::-webkit-scrollbar-track {
-    background: transparent;
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .ant-tabs-nav {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .ant-tabs-top-bar {
-    margin: 0;
+  margin: 0;
 }
 
 .ant-menu-inline {
-    border: none;
+  border: none;
 }
 
 .ant-tree-title {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .ant-select {
-    width: 100%;
+  width: 100%;
+}
+
+.ant-collapse {
+  border: 0px solid #ffffff !important;
+  .ant-collapse-item {
+    border: 0px solid #ffffff !important;
+  }
+  .ant-collapse-content {
+    border: 1px solid #ffffff;
+  }
 }
 
 #antd-colorPop {
-    box-shadow: none;
+  box-shadow: none;
 
-    .ant-popover-inner-content {
-        padding: 0;
-    }
+  .ant-popover-inner-content {
+    padding: 0;
+  }
 }
 
 #contextMenu {
-    position: fixed;
-    width: 200px;
-    z-index: 10000;
-    box-shadow: 0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05) !important;
+  position: fixed;
+  width: 200px;
+  z-index: 10000;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05) !important;
 
-    .ant-menu-item {
-        margin: 0;
-    }
+  .ant-menu-item {
+    margin: 0;
+  }
 }
