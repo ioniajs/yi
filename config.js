@@ -7,7 +7,7 @@ const CONFIG = {
   DEV_SERVER_PORT: 4396,
   HOST:
     process.env.NODE_ENV !== "production"
-      ? "http://127.0.0.1"
+      ? "http://localhost"
       : "http://127.0.0.1",
 };
 
