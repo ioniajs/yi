@@ -21,7 +21,7 @@ const config = {
   },
   output: {
     path: path.join(process.cwd(), "./.build/edit"),
-    publicPath: !isDev ? `${CONFIG.HOST}:${CONFIG.PORT}/edit` : undefined,
+    publicPath: !isDev ? `${CONFIG.DOMAIN}/edit` : undefined,
     filename: "[name].js",
     chunkFilename: "[name].js",
   },
