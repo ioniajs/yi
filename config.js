@@ -1,14 +1,13 @@
+const isDev = process.env.NODE_ENV !== "production";
 /**
  * @description 前后端通用配置
  */
 const CONFIG = {
-  DEV: process.env.NODE_ENV !== "production",
+  DEV: isDev,
   PORT: 8888,
   DEV_SERVER_PORT: 4396,
-  HOST:
-    process.env.NODE_ENV !== "production"
-      ? "http://localhost"
-      : "http://127.0.0.1",
+  HOST: isDev ? "http://127.0.0.1" : "http://ide.yun.jeecms.com",
+  DOMAIN: isDev ? "http://127.0.0.1:8888" : "http://ide.yun.jeecms.com",
 };
 
 module.exports = {

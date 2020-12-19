@@ -1,0 +1,10 @@
+
+{
+  "name": "jee-ide",
+  "script": "./server/index.js",
+  "instances": 1,
+  "cwd": ".",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
