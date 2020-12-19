@@ -60,7 +60,7 @@ const Toolbar = () => {
 
   return (
     <div className={styles.header}>
-      <div className={styles.logo}>首页</div>
+      <div className={styles.goBack}>返回</div>
       <div className={styles.toolbar}>
         {/* <ToolButton title="提示" icon="iconTemplatemarket" /> */}
         <ToolButton
@@ -79,6 +79,7 @@ const Toolbar = () => {
         <ToolButton title="预览" icon="iconPreview" onClick={showPage} />
         <ToolButton title="保存" icon="iconsave" onClick={savePage} />
       </div>
+      <div className={styles.fullScreen}>全屏</div>
     </div>
   );
 };
