@@ -6,11 +6,12 @@
         "start": "npm run build && npm run server",
         "build": "concurrently \"npm run build:edit\" \"npm run build:page\" \"npm run build:comp\"",
         "server": "cross-env NODE_ENV=production node ./server/index.js",
+        "dev:server": "cross-env NODE_ENV=development node ./server/index.js",
         "build:edit": "webpack --progress --config ./script/webpack.config.edit.js",
         "build:page": "webpack --progress --config ./script/webpack.config.page.js",
         "build:comp": "webpack --progress --config ./script/webpack.config.comp.js",
         "dev": "node ./script/debugComp.js -dev",
-        "dev:edit": "webpack-dev-server --progress --config ./script/webpack.config.edit.js -dev"
+        "dev:edit": "cross-env NODE_ENV=development webpack-dev-server --progress --config ./script/webpack.config.edit.js -dev"
     },
     "dependencies": {
         "@babel/core": "^7.7.4",
