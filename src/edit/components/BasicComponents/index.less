@@ -169,6 +169,16 @@
         color: #666666;
       }
     }
+    .hotSearchContent {
+      span {
+        width: 48px;
+        height: 12px;
+        font-size: 12px;
+        font-family: Microsoft YaHei;
+        font-weight: 600;
+        color: #333333;
+      }
+    }
     .searchHistoryContent {
       display: flex;
       flex-wrap: wrap;
@@ -183,6 +193,161 @@
         background-color: #157ffb;
         color: #ffffff;
       }
+    }
+  }
+}
+
+.searchSuccessResult {
+  margin-top: 4px;
+  padding: 15px 15px 15px 20px;
+  span {
+    width: 48px;
+    height: 12px;
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    font-weight: 600;
+    color: #333333;
+  }
+  .searchSuccessResultContent {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    .searchSuccessResultButton {
+      text-align: center;
+      margin-right: 5px;
+      margin-bottom: 10px;
+      padding-top: 9px;
+      width: 76px;
+      height: 76px;
+      border: 1px dashed #e8e8e8;
+      i {
+        font-size: 24.2px;
+      }
+      p {
+        height: 11px;
+        font-size: 12px;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #333333;
+        line-height: 25px;
+      }
+    }
+  }
+}
+
+.searchErrorResultContent {
+  position: relative;
+  .searchErrorResultContentSpan {
+    display: inline-block;
+    margin: 0 45px 0 36px;
+    width: 205px;
+    height: 38px;
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #333333;
+    line-height: 26px;
+  }
+  .searchErrorResultContentButton {
+    position: absolute;
+    left: 160px;
+    bottom: -3px;
+    display: block;
+    width: 66px;
+    height: 26px;
+    span {
+      display: inline-block;
+      width: 35px;
+      height: 12px;
+      font-size: 12px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 0px;
+    }
+  }
+}
+
+.compositionElement {
+  display: flex;
+  position: relative;
+  .compositionElementSearchOne {
+    padding: 41px 8px 0px 8px;
+    width: 119px;
+    height: 119px;
+    border: 1px dashed #e8e8e8;
+    Input {
+      padding-left: 20px;
+      padding-bottom: 5px;
+      width: 104px;
+      height: 18px;
+      border-radius: 9px;
+    }
+    input::-webkit-input-placeholder {
+      width: 36px;
+      font-size: 7px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #666666;
+      margin-bottom: 2px;
+    }
+    i {
+      position: absolute;
+      left: 15px;
+      top: 45px;
+      z-index: 99;
+      font-size: 8px;
+      color: #666666;
+    }
+    p {
+      margin: 26px 34px 0px 34px;
+      width: 36px;
+      height: 12px;
+      font-size: 12px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #333333;
+      line-height: 25px;
+    }
+  }
+  .compositionElementSearchTwo {
+    padding: 44px 5px 0px 11px;
+    margin-left: 10px;
+    width: 119px;
+    height: 119px;
+    border: 1px dashed #e8e8e8;
+    Input {
+      // width: 78px;
+      height: 17px;
+      padding-bottom: 6px;
+    }
+
+    input::-webkit-input-placeholder {
+      width: 36px;
+      font-size: 7px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #666666;
+      margin-bottom: 5px;
+    }
+    Button {
+      display: block;
+      height: 17px;
+      span {
+        display: block;
+        font-size: 7px;
+        margin-top: -2px;
+      }
+    }
+    p {
+      margin: 22px 34px 0px 34px;
+      width: 36px;
+      height: 12px;
+      font-size: 12px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #333333;
+      line-height: 25px;
     }
   }
 }

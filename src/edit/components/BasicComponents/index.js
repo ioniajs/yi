@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Input } from 'antd'
+import { Input, Button } from 'antd'
 import { Collapse } from 'antd';
-import styles from './index.less';
+import styles from './index.less'
+import './antd.less'
 
 const { Panel } = Collapse;
+const { Search } = Input;
 
-const vesselComponentsTop = [
+const vesselComponents = [
     {icon: 'iconBlock',title: '区块'},
     {icon: 'iconBlock',title: '头部'},
     {icon: 'iconBlock',title: '导航'},
@@ -48,8 +50,13 @@ const searchHistoryContent = [
     {title: '链接文本'},
 ]
 
+const array1 = vesselComponents.concat(basicComponents)
+
 export default () => {
     const [input, setInput] = useState(false)
+    const [value, setValue] = useState();
+    const [changeMark, setChangeMark] = useState(false);
+
     return (
         <>
             <div className={`${styles.basicComponentsHeader}`}>
@@ -58,7 +65,20 @@ export default () => {
                     ? 
                         (<div className={`${styles.basicComponentSearchInput}`}>
                             <i  className="iconfont iconsearchfor" /> 
-                            <Input type="text" placeholder="在基础元件中搜索" />
+                            <Input onChange={(e) => {
+                                // console.log(e.target.value, 'eee')
+                                const temp = array1.map((item) => {
+                                    if(item.title.indexOf(e.target.value) > -1) {
+                                        return item
+                                    }
+                                }).filter(t => t !== undefined);
+                                setValue(temp);
+                                if (e.target.value) {
+                                    setChangeMark(true);
+                                } else {
+                                    setChangeMark(false)
+                                }
+                            }} type="text" placeholder="在基础元件中搜索" />
                             <i onClick={() => setInput(false)} className="iconfont iconshutdown" />
                         </div>) 
                     : 
@@ -73,92 +93,116 @@ export default () => {
             {
                 input
                     ? 
-                        (<div className={`${styles.basicComponentsSearchPage}`}>
-                            <div className={`${styles.searchHistory}`}>
-                                <div className={`${styles.searchHistoryTitle}`}>
-                                    <span>历史搜索</span>
-                                    <i className="iconfont icondelete-bin-line" />
+                        changeMark ? 
+                            ((value && value.length !==0) 
+                                ? 
+                                <div className={`${styles.searchSuccessResult}`}>
+                                    <span>搜索结果</span>
+                                    <div className={`${styles.searchSuccessResultContent}`}>
+                                        {
+                                            value.map((c,index) => {
+                                                return (
+                                                    <div key={index} className={`${styles.searchSuccessResultButton}`}>
+                                                        <i className={`iconfont ${c.icon}`}/>
+                                                        <p>{c.title}</p>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
                                 </div>
-                                <div className={`${styles.searchHistoryContent}`}>
-                                    {
-                                       searchHistoryContent.map((value,index) => {
-                                           return (
-                                            <div key={index} className={`${styles.searchHistoryTitle}`} >
-                                                {value.title}
-                                            </div>
-                                           )
-                                       }) 
-                                    }
-                                </div>
-                            </div>
-                            <div className={`${styles.searchHistory}`}>
-                                <div className={`${styles.hotSearchContent}`}>
-                                    <span>热门搜索</span>
-                                </div>
-                                <div className={`${styles.searchHistoryContent}`}>
-                                    {
-                                       searchHistoryContent.map((value,index) => {
-                                           return (
-                                            <div key={index}  className={`${styles.searchHistoryTitle}`} >
-                                                {value.title}
-                                            </div>
-                                           )
-                                       }) 
-                                    }
-                                </div>
-                            </div>
-                        </div>)   
-                    :    
-                        (<div className={`${styles.basicComponentsContent}`}>
-                            <Collapse>
-                                <Panel header="容器">
-                                    <div className={`${styles.vesselComponents}`}>
-                                    {
-                                        vesselComponentsTop.map((a,index) => {
+                                :
+                                <div className={`${styles.searchErrorResultContent}`}>
+                                    <img  src={require('../../image/notcomponent.png')}/>
+                                    <span className={`${styles.searchErrorResultContentSpan }`}>没有您需要的组件，试试去发布需求，让更多设计者知道吧~</span>
+                                    <Button className={`${styles.searchErrorResultContentButton }`} type="primary">去发布</Button>
+                                </div>) 
+                                : 
+                            (<div className={`${styles.basicComponentsSearchPage}`}>
+                                <div className={`${styles.searchHistory}`}>
+                                    <div className={`${styles.searchHistoryTitle}`}>
+                                        <span>历史搜索</span>
+                                        <i className="iconfont icondelete-bin-line" />
+                                    </div>
+                                    <div className={`${styles.searchHistoryContent}`}>
+                                        {
+                                        searchHistoryContent.map((value,index) => {
                                             return (
-                                                <div key={index} className={`${ index === 1 ? styles.vesselComponentsButtonTop : ''}`}>
-                                                    <i className={`iconfont ${a.icon}`} />
-                                                    <p>{a.title}</p>
+                                                <div key={index} className={`${styles.searchHistoryTitle}`} >
+                                                    {value.title}
                                                 </div>
                                             )
-                                        })
-                                    }
+                                        }) 
+                                        }
                                     </div>
-                                </Panel>
-                            </Collapse>
-                            <Collapse>
-                                <Panel header="基础元件">
-                                    <div className={`${styles.basicComponent}`} >
+                                </div>
+                                <div className={`${styles.searchHistory}`}>
+                                    <div className={`${styles.hotSearchContent}`}>
+                                        <span>热门搜索</span>
+                                    </div>
+                                    <div className={`${styles.searchHistoryContent}`}>
                                         {
-                                            basicComponents.map((c,index) => {
+                                        searchHistoryContent.map((value,index) => {
+                                            return (
+                                                <div key={index}  className={`${styles.searchHistoryTitle}`} >
+                                                    {value.title}
+                                                </div>
+                                            )
+                                        }) 
+                                        }
+                                    </div>
+                                </div>
+                            </div>)
+                        :    
+                            (<div className={`${styles.basicComponentsContent}`}>
+                                <Collapse>
+                                    <Panel header="容器">
+                                        <div className={`${styles.vesselComponents}`}>
+                                        {
+                                            vesselComponents.map((a,index) => {
                                                 return (
-                                                    <div key={index} className={`${styles.basicComponentButton}`} >
-                                                        <i className={`iconfont ${c.icon}`} />
-                                                        <p>{c.title}</p>
+                                                    <div key={index} className={`${styles.vesselComponentsButtonTop}`}>
+                                                        <i className={`iconfont ${a.icon}`} />
+                                                        <p>{a.title}</p>
                                                     </div>
                                                 )
                                             })
                                         }
-                                    </div>
-                                </Panel>
-                            </Collapse>
-                            <Collapse>
-                                <Panel header="组合元件">
-                                    <div className={`${styles.combinationComponent}`} >
-                                        {
-                                            basicComponents.map((c,index) => {
-                                                return (
-                                                    <div key={index} className={`${styles.combinationComponentButton}`} >
-                                                        <i className={`iconfont ${c.icon}`} />
-                                                        <p>{c.title}</p>
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                </Panel>
-                            </Collapse>
-                        </div>)
+                                        </div>
+                                    </Panel>
+                                </Collapse>
+                                <Collapse>
+                                    <Panel header="基础元件">
+                                        <div className={`${styles.basicComponent}`} >
+                                            {
+                                                basicComponents.map((c,index) => {
+                                                    return (
+                                                        <div key={index} className={`${styles.basicComponentButton}`}>
+                                                            <i className={`iconfont ${c.icon}`} />
+                                                            <p>{c.title}</p>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    </Panel>
+                                </Collapse>
+                                <Collapse>
+                                    <Panel header="组合元件">
+                                        <div className={`${styles.compositionElement}`}>
+                                            <div className={`${styles.compositionElementSearchOne}`}>
+                                                <i className="iconfont iconsearchfor" />
+                                                <Input placeholder="请输入内容" />
+                                                <p>搜索一</p>
+                                            </div>
+                                            <div className={`${styles.compositionElementSearchTwo}`} >
+                                                <Search placeholder="请输入内容" enterButton="搜索" />
+                                                <p>搜索二</p>
+                                            </div>
+                                        </div>
+                                    </Panel>
+                                </Collapse>
+                            </div>)
 
             }
         </>
