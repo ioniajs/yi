@@ -92,7 +92,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    & > .vesselComponentsButtonTop:nth-child(1) {
+      margin-top: 0px;
+    }
+    & > .vesselComponentsButtonTop:nth-child(2) {
+      margin-top: 0px;
+    }
+    & > .vesselComponentsButtonTop:nth-child(3) {
+      margin-top: 0px;
+    }
     .vesselComponentsButtonTop {
+      margin-top: 10px;
       text-align: center;
       padding-top: 9px;
       width: 76px;
@@ -109,6 +119,10 @@
         color: #333333;
         line-height: 25px;
       }
+    }
+    .vesselComponentsButtonBottom {
+      width: 76px;
+      height: 76px;
     }
   }
   .basicComponent {
@@ -142,6 +156,10 @@
         color: #333333;
         line-height: 25px;
       }
+    }
+    .basicComponentButtonBottom {
+      width: 76px;
+      height: 76px;
     }
   }
 }

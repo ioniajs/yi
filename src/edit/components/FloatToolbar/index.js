@@ -28,31 +28,31 @@ export const ToolModal = ({ header }) => (
   </>
 );
 
+const Expand = ({showIcon, setShowIcon}) => {
+  return (
+    <div
+      onClick={() => setShowIcon(!showIcon)}
+      className={`${styles.floatToolRightButtonActive}`}
+    >
+      <i className="iconfont iconright" />
+    </div>
+  );
+};
+
+export const ExpandModel = ({showIcon, setShowIcon = true}) => {
+  return (
+    <div
+      onClick={() => setShowIcon(!showIcon)}
+      className={`${styles.floatModalRightButtonActive}`}
+    >
+      <i className="iconfont iconright" />
+    </div>
+  );
+};
+
 const FloatToolbar = () => {
   const [active, setActive] = useState(1);
   const [showIcon, setShowIcon] = useState(true);
-
-  const Expand = () => {
-    return (
-      <div
-        onClick={() => setShowIcon(!showIcon)}
-        className={`${styles.floatToolRightButton} ${styles.floatToolRightButtonActive}`}
-      >
-        <i className="iconfont iconright" />
-      </div>
-    );
-  };
-
-  const ExpandModel = () => {
-    return (
-      <div
-        onClick={() => setShowIcon(!showIcon)}
-        className={`${styles.floatModalRightButton} ${styles.floatModalRightButtonActive}`}
-      >
-        <i className="iconfont iconright" />
-      </div>
-    );
-  };
 
   return (
     <>
@@ -89,14 +89,14 @@ const FloatToolbar = () => {
             title="我的"
           />
         </div>
-        {active > 0 && !showIcon && <Expand />}
+        {active > 0 && !showIcon && <Expand showIcon={showIcon} setShowIcon={setShowIcon} />}
       </div>
       {active === 1 && showIcon && (
         <>
           <div className={`${styles.floatModal}`}>
             <PageNav />
           </div>
-          <ExpandModel />
+          <ExpandModel showIcon = {showIcon} setShowIcon = {setShowIcon} />
         </>
       )}
       {active === 2 && showIcon && (
@@ -104,7 +104,7 @@ const FloatToolbar = () => {
           <div className={`${styles.floatModal}`}>
             <ToolModal header={<BasicComponents />} />
           </div>
-          <ExpandModel />
+          <ExpandModel showIcon = {showIcon} setShowIcon = {setShowIcon} />
         </>
       )}
     </>
