@@ -1,27 +1,10 @@
-import styles from "./index.less";
-import React, { useContext, useCallback, useRef, useMemo } from "react";
+import { Input, Tooltip } from "antd";
+import React, { useContext } from "react";
 import storeContext, { EditFuncContext } from "../../../context";
-import { searchTree, EnumEdit } from "../../common";
-import { record } from "../../record";
-import {
-  Tabs,
-  Layout,
-  Input,
-  Select,
-  Switch,
-  Popover,
-  message,
-  Tooltip,
-} from "antd";
-import { SketchPicker } from "react-color";
-
-const IsMacOS = navigator.platform.match("Mac");
-const { TabPane } = Tabs;
-const { Option } = Select;
-const tab = ["页面设置", "样式", "属性"];
+import "./index.less";
 
 export const ToolButton = ({ icon, title, onClick }) => (
-  <div className={styles.toolButton}>
+  <div className="tool-button">
     <Tooltip
       title={
         <span style={{ color: "#333333", fontSize: 14, fontWeight: 400 }}>
@@ -40,6 +23,8 @@ const Toolbar = () => {
     state: { choose },
   } = useContext(storeContext);
   const {
+    paintScale,
+    changeSlider,
     changeSourceCodeMode,
     savePage,
     showPage,
@@ -58,10 +43,46 @@ const Toolbar = () => {
 
   // const fillUnable = useCallback((can) => (can ? undefined : style.unable));
 
+  const handleZoomIn = () => {
+    let scale = 10;
+    switch (Number((paintScale * 100).toFixed(0))) {
+      case 100:
+        scale = 60;
+        break;
+      case 60:
+        scale = 30;
+        break;
+      case 30:
+        scale = 10;
+        break;
+      default:
+        scale = 10;
+        break;
+    }
+    changeSlider(scale);
+  };
+  const handleZoomOut = () => {
+    let scale = 100;
+    switch (Number((paintScale * 100).toFixed(0))) {
+      case 60:
+        scale = 100;
+        break;
+      case 30:
+        scale = 60;
+        break;
+      case 10:
+        scale = 30;
+        break;
+      default:
+        scale = 100;
+        break;
+    }
+    changeSlider(scale);
+  };
+
   return (
-    <div className={styles.header}>
-      <div className={styles.goBack}>返回</div>
-      <div className={styles.toolbar}>
+    <div className="toolbar">
+      <div className="toolbar-container">
         {/* <ToolButton title="提示" icon="iconTemplatemarket" /> */}
         <ToolButton
           title="源码"
@@ -74,12 +95,25 @@ const Toolbar = () => {
         {/* <ToolButton title="提示" icon="iconMoretemplates" />
 
         <ToolButton title="提示" icon="iconQuote" /> */}
-
-        <ToolButton title="画布设置" icon="iconSetup" />
+        {/* <Input
+          className="zoom-input"
+          width={40}
+          readOnly
+          addonAfter={<i className="iconfont iconAddmodule" />}
+          addonBefore={<i className="iconfont iconLess" />}
+        /> */}
+        <div className="tool-button">
+          <i className="iconfont iconLess zoom-icon" onClick={handleZoomIn} />
+          <span className="zoom-scale">{(paintScale * 100).toFixed(0)}%</span>
+          <i
+            className="iconfont iconAddmodule zoom-icon"
+            onClick={handleZoomOut}
+          />
+        </div>
+        {/* <ToolButton title="画布设置" icon="iconSetup" /> */}
         <ToolButton title="预览" icon="iconPreview" onClick={showPage} />
         <ToolButton title="保存" icon="iconsave" onClick={savePage} />
       </div>
-      <div className={styles.fullScreen}>全屏</div>
     </div>
   );
 };

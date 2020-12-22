@@ -27,14 +27,6 @@ import style from "./style/index.less";
 const IsMacOS = navigator.platform.match("Mac");
 const EnumId = { root: "root" }; // 画布id
 const PaintBoxMargin = 30; // 画布边距
-const SliderMarks = {
-  // 缩放拖动条坐标轴
-  0: "0%",
-  25: "26%",
-  50: "50%",
-  75: "75%",
-  100: "100%",
-};
 
 const Board = () => {
   const { state, dispatch, forceUpdate } = useContext(storeContext);
@@ -759,6 +751,9 @@ const Board = () => {
     <Layout className={style.main}>
       <EditFuncContext.Provider
         value={{
+          paintScale,
+          setPaintMinHeight,
+          changeSlider,
           changeSourceCodeMode,
           savePage,
           showPage,

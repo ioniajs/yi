@@ -6,8 +6,8 @@ const CONFIG = {
   DEV: isDev,
   PORT: 8888,
   DEV_SERVER_PORT: 4396,
-  HOST: isDev ? "http://127.0.0.1" : "http://ide.yun.jeecms.com",
-  DOMAIN: isDev ? "http://127.0.0.1:8888" : "http://ide.yun.jeecms.com",
+  HOST: isDev ? "http://127.0.0.1" : "http://ide.jeecms.com",
+  DOMAIN: isDev ? "http://127.0.0.1:8888" : "http://ide.jeecms.com",
 };
 
 module.exports = {

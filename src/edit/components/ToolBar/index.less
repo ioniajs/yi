@@ -1,4 +1,4 @@
-.header {
+:global(.toolbar) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,11 +8,7 @@
   background-color: #333333;
 }
 
-.goBack {
-  width: 120px;
-}
-
-.toolbar {
+:global(.toolbar-container) {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -21,11 +17,34 @@
   padding-right: 120px;
 }
 
-.toolButton {
+:global(.tool-button) {
   margin: 0 20px;
   opacity: 0.7;
   font-size: 16px;
   &:hover {
     opacity: 1;
   }
+}
+
+:global(.headerSlider) {
+  width: 200px;
+}
+
+:global(.zoom-input) {
+  display: flex;
+  align-items: center;
+  width: 140px;
+}
+
+:global(.zoom-scale) {
+  margin: 0 12px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 16px;
+  opacity: 0.7;
+}
+
+:global(.zoom-icon) {
+  font-size: 18px;
+  opacity: 0.7;
 }
