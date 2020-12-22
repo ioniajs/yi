@@ -753,6 +753,7 @@ const Board = () => {
         value={{
           paintScale,
           setPaintMinHeight,
+          chooseDragComp,
           changeSlider,
           changeSourceCodeMode,
           savePage,
@@ -768,9 +769,9 @@ const Board = () => {
         }}
       >
         <Toolbar />
+        <FloatToolbar />
       </EditFuncContext.Provider>
       <Layout>
-        <FloatToolbar />
         {sourceCodeMode && (
           <Editor
             className={style.codeEditor}

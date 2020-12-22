@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.less";
 import BasicComponents from "../BasicComponents";
 import PageNav from "../PageNav";
@@ -28,7 +28,7 @@ export const ToolModal = ({ header }) => (
   </>
 );
 
-const Expand = ({showIcon, setShowIcon}) => {
+const Expand = ({ showIcon, setShowIcon }) => {
   return (
     <div
       onClick={() => setShowIcon(!showIcon)}
@@ -39,7 +39,7 @@ const Expand = ({showIcon, setShowIcon}) => {
   );
 };
 
-export const ExpandModel = ({showIcon, setShowIcon = true}) => {
+export const ExpandModel = ({ showIcon, setShowIcon = true }) => {
   return (
     <div
       onClick={() => setShowIcon(!showIcon)}
@@ -53,6 +53,10 @@ export const ExpandModel = ({showIcon, setShowIcon = true}) => {
 const FloatToolbar = () => {
   const [active, setActive] = useState(1);
   const [showIcon, setShowIcon] = useState(true);
+
+  useEffect(() => {
+    setShowIcon(true);
+  }, [active]);
 
   return (
     <>
@@ -89,14 +93,16 @@ const FloatToolbar = () => {
             title="我的"
           />
         </div>
-        {active > 0 && !showIcon && <Expand showIcon={showIcon} setShowIcon={setShowIcon} />}
+        {active > 0 && !showIcon && (
+          <Expand showIcon={showIcon} setShowIcon={setShowIcon} />
+        )}
       </div>
       {active === 1 && showIcon && (
         <>
           <div className={`${styles.floatModal}`}>
             <PageNav />
           </div>
-          <ExpandModel showIcon = {showIcon} setShowIcon = {setShowIcon} />
+          <ExpandModel showIcon={showIcon} setShowIcon={setShowIcon} />
         </>
       )}
       {active === 2 && showIcon && (
@@ -104,7 +110,7 @@ const FloatToolbar = () => {
           <div className={`${styles.floatModal}`}>
             <ToolModal header={<BasicComponents />} />
           </div>
-          <ExpandModel showIcon = {showIcon} setShowIcon = {setShowIcon} />
+          <ExpandModel showIcon={showIcon} setShowIcon={setShowIcon} />
         </>
       )}
     </>

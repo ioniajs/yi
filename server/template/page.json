@@ -77,6 +77,71 @@
           "el": "wc20"
         }
       ]
+    },
+    {
+      "name": "Image",
+      "style": {
+        "position": "relative",
+        "width": "180px",
+        "height": "180px",
+        "marginTop": "0px"
+      },
+      "props": {
+        "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
+        "blank": true,
+        "lazy": true
+      },
+      "el": "wc21"
+    },
+    {
+      "name": "Text",
+      "style": {
+        "position": "relative",
+        "width": "200px"
+      },
+      "props": {
+        "text": "默认文本",
+        "fontSize": "24px",
+        "lineHeight": "36px",
+        "textAlign": "center",
+        "lazy": true
+      },
+      "el": "wc22"
+    },
+    {
+      "name": "Image",
+      "style": {
+        "position": "relative",
+        "width": "180px",
+        "height": "180px",
+        "marginTop": "0px",
+        "left": "1489px",
+        "top": "-179px"
+      },
+      "props": {
+        "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
+        "blank": true,
+        "lazy": true
+      },
+      "el": "wc23"
+    },
+    {
+      "name": "Text",
+      "style": {
+        "position": "relative",
+        "width": "274px",
+        "left": "1123px",
+        "top": "-275px",
+        "height": "159px"
+      },
+      "props": {
+        "text": "默认文本",
+        "fontSize": "44px",
+        "lineHeight": "36px",
+        "textAlign": "center",
+        "lazy": true
+      },
+      "el": "wc25"
     }
   ]
 }

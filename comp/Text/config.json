@@ -1,5 +1,6 @@
 {
     "name": "文本",
+    "icon": "icontext",
     "staticProps": [
         {
             "name": "文本",
