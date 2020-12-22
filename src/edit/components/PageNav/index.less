@@ -43,6 +43,34 @@
   color: #157ffb !important;
 }
 
+:global(.ant-tree-node-content-wrapper) {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+}
+
 :global(.ant-tree-treenode-selected::before) {
   background: #fff !important;
+}
+
+:global(.ant-tree-title) {
+  width: 100%;
+}
+
+:global(.page-tree-node) {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+:global(.page-tree-icon) {
+  font-size: 12px;
+  margin: 0 5px;
+  color: #666666;
+}
+
+:global(.page-tree-icon:hover) {
+  font-size: 12px;
+  margin: 0 5px;
+  color: #157ffb !important;
 }

@@ -8,6 +8,7 @@ const treeData = [
   {
     title: "首页",
     key: "home",
+    isLeaf: true,
   },
   {
     title: "新闻",
@@ -37,10 +38,23 @@ const PageNav = () => {
       <DirectoryTree
         className="page-tree"
         multiple
+        blockNode
         defaultExpandAll
         onSelect={onSelect}
         onExpand={onExpand}
         treeData={treeData}
+        titleRender={(node) => (
+          <div className="page-tree-node">
+            {node.title}
+            {node.isLeaf && (
+              <div>
+                <i className="iconfont iconedit page-tree-icon" />
+                <i className="iconfont iconcopy page-tree-icon" />
+                <i className="iconfont icondelete-bin-line page-tree-icon" />
+              </div>
+            )}
+          </div>
+        )}
       />
     </div>
   );
