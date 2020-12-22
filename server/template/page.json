@@ -10,9 +10,9 @@
       "style": {
         "position": "relative",
         "width": "1920px",
-        "height": "1050px",
+        "height": "854px",
         "left": "0px",
-        "top": "-5px",
+        "top": "0px",
         "backgroundColor": "rgba(155,146,202,1)",
         "backgroundSize": "cover"
       },

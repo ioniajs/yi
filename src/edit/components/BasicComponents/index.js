@@ -50,6 +50,11 @@ const searchHistoryContent = [
     {title: '链接文本'},
 ]
 
+const searchImages = [
+    {iamge: '../../image/searchOne.png', title: '搜索一'},
+    {iamge: '../../image/searchTwo.png', title: '搜索二'},
+]
+
 const array1 = vesselComponents.concat(basicComponents)
 
 export default () => {
@@ -161,7 +166,7 @@ export default () => {
                                         {
                                             vesselComponents.map((a,index) => {
                                                 return (
-                                                    <div key={index} className={`${styles.vesselComponentsButtonTop}`}>
+                                                    <div key={index} className={`${ index < 4 ? styles.vesselComponentsButtonTop : styles.vesselComponentsButtonBottom}`}>
                                                         <i className={`iconfont ${a.icon}`} />
                                                         <p>{a.title}</p>
                                                     </div>
@@ -177,7 +182,7 @@ export default () => {
                                             {
                                                 basicComponents.map((c,index) => {
                                                     return (
-                                                        <div key={index} className={`${styles.basicComponentButton}`}>
+                                                        <div key={index} className={`${index < 16 ?styles.basicComponentButton : styles.basicComponentButtonBottom}`}>
                                                             <i className={`iconfont ${c.icon}`} />
                                                             <p>{c.title}</p>
                                                         </div>
@@ -189,7 +194,17 @@ export default () => {
                                 </Collapse>
                                 <Collapse>
                                     <Panel header="组合元件">
-                                        <div className={`${styles.compositionElement}`}>
+                                        {
+                                            // searchImages.map((image, index) => {
+                                            //     return (
+                                            //         <div>
+                                            //             <img src={image.image} />
+                                            //             <p>{iamge.title}</p>
+                                            //         </div>
+                                            //     )
+                                            // })
+                                        }
+                                        {/* <div className={`${styles.compositionElement}`}>
                                             <div className={`${styles.compositionElementSearchOne}`}>
                                                 <i className="iconfont iconsearchfor" />
                                                 <Input placeholder="请输入内容" />
@@ -199,7 +214,7 @@ export default () => {
                                                 <Search placeholder="请输入内容" enterButton="搜索" />
                                                 <p>搜索二</p>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </Panel>
                                 </Collapse>
                             </div>)
