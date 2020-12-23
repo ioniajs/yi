@@ -1,6 +1,6 @@
 {
-    "name": "纯文本",
-    "icon": "icontext",
+    "name": "链接文本",
+    "icon": "iconLinktext",
     "type":"element",
     "staticProps": [
         {
@@ -58,11 +58,12 @@
     ],
     "defaultStyles": {
         "position": "relative",
-        "width": "200px"
+        "width": "200px",
+        "height": "30px"
     },
     "defaultProps": {
-        "text": "默认文本",
-        "fontSize": "24px",
+        "text": "链接文本",
+        "fontSize": "20px",
         "lineHeight": "36px",
         "textAlign": "center"
     },

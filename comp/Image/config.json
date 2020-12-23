@@ -1,6 +1,7 @@
 {
     "name": "图片",
     "icon": "iconimage",
+    "type":"element",
     "staticProps": [
         {
             "name": "点击链接",
