@@ -79,21 +79,105 @@
       "el": "wc31"
     },
     {
-      "name": "Image",
+      "name": "LinkText",
       "style": {
         "position": "relative",
-        "width": "685px",
-        "height": "193px",
-        "marginTop": "0px",
-        "left": "464px",
-        "top": "-194px"
+        "width": "200px",
+        "height": "35px",
+        "left": "1203px",
+        "top": "-511px"
       },
       "props": {
-        "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
-        "blank": true,
+        "text": "链接文本",
+        "fontSize": "20px",
+        "lineHeight": "36px",
+        "textAlign": "center",
         "lazy": true
       },
-      "el": "wc32"
+      "el": "wc33"
+    },
+    {
+      "name": "View",
+      "style": {
+        "position": "relative",
+        "width": "1561px",
+        "height": "120px",
+        "left": "3px",
+        "top": "-912px"
+      },
+      "props": {
+        "lazy": true
+      },
+      "el": "wc34"
+    },
+    {
+      "name": "Text",
+      "style": {
+        "position": "relative",
+        "width": "200px",
+        "left": "729px",
+        "top": "-1387px"
+      },
+      "props": {
+        "text": "默认文本",
+        "fontSize": "24px",
+        "lineHeight": "36px",
+        "textAlign": "center",
+        "lazy": true
+      },
+      "el": "wc37"
+    },
+    {
+      "name": "LinkText",
+      "style": {
+        "position": "relative",
+        "width": "200px",
+        "height": "34px",
+        "left": "1099px",
+        "top": "-345px"
+      },
+      "props": {
+        "text": "链接文本",
+        "fontSize": "20px",
+        "lineHeight": "36px",
+        "textAlign": "center",
+        "lazy": true
+      },
+      "el": "wc38"
+    },
+    {
+      "name": "Text",
+      "style": {
+        "position": "relative",
+        "width": "200px",
+        "left": "1101px",
+        "top": "-412px"
+      },
+      "props": {
+        "text": "默认文本",
+        "fontSize": "24px",
+        "lineHeight": "36px",
+        "textAlign": "center",
+        "lazy": true
+      },
+      "el": "wc39"
+    },
+    {
+      "name": "Iframe",
+      "style": {
+        "position": "relative",
+        "width": "1919px",
+        "height": "950px",
+        "left": "2px",
+        "top": "-580px",
+        "backgroundColor": "rgba(255,255,255,1)"
+      },
+      "props": {
+        "scrolling": true,
+        "lazy": true,
+        "src": "http://www.baidu.com"
+      },
+      "el": "wc43"
     }
   ]
 }
