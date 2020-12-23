@@ -6,109 +6,6 @@
   },
   "tree": [
     {
-      "name": "View",
-      "style": {
-        "position": "relative",
-        "width": "1920px",
-        "height": "854px",
-        "left": "0px",
-        "top": "0px",
-        "backgroundColor": "rgba(155,146,202,1)",
-        "backgroundSize": "cover"
-      },
-      "props": {
-        "lazy": true
-      },
-      "el": "wc16",
-      "children": [
-        {
-          "name": "Image",
-          "style": {
-            "position": "relative",
-            "width": "563px",
-            "height": "563px",
-            "marginTop": "0px",
-            "left": "559px",
-            "top": "66px",
-            "backgroundColor": "rgba(52,30,163,1)"
-          },
-          "props": {
-            "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
-            "blank": true,
-            "lazy": true
-          },
-          "el": "wc18"
-        },
-        {
-          "name": "Image",
-          "style": {
-            "position": "relative",
-            "width": "755px",
-            "height": "755px",
-            "marginTop": "0px9999",
-            "left": "1127px",
-            "top": "-497px",
-            "marginBottom": "9",
-            "backgroundColor": "rgba(75,48,182,1)"
-          },
-          "props": {
-            "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
-            "blank": true,
-            "lazy": true
-          },
-          "el": "wc19"
-        },
-        {
-          "name": "Image",
-          "style": {
-            "position": "relative",
-            "width": "380px",
-            "height": "380px",
-            "marginTop": "0px",
-            "left": "174px",
-            "top": "-1251px",
-            "overflow": "hidden"
-          },
-          "props": {
-            "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
-            "blank": true,
-            "lazy": true
-          },
-          "el": "wc20"
-        }
-      ]
-    },
-    {
-      "name": "Image",
-      "style": {
-        "position": "relative",
-        "width": "180px",
-        "height": "180px",
-        "marginTop": "0px"
-      },
-      "props": {
-        "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
-        "blank": true,
-        "lazy": true
-      },
-      "el": "wc21"
-    },
-    {
-      "name": "Text",
-      "style": {
-        "position": "relative",
-        "width": "200px"
-      },
-      "props": {
-        "text": "默认文本",
-        "fontSize": "24px",
-        "lineHeight": "36px",
-        "textAlign": "center",
-        "lazy": true
-      },
-      "el": "wc22"
-    },
-    {
       "name": "Image",
       "style": {
         "position": "relative",
@@ -126,22 +23,77 @@
       "el": "wc23"
     },
     {
-      "name": "Text",
+      "name": "ImageText",
       "style": {
         "position": "relative",
-        "width": "274px",
-        "left": "1123px",
-        "top": "-275px",
-        "height": "159px"
+        "width": "500px",
+        "left": "268px",
+        "top": "-548px"
+      },
+      "props": {
+        "lazy": true
+      },
+      "children": [
+        {
+          "name": "Text",
+          "style": {
+            "position": "relative",
+            "width": "100%"
+          },
+          "props": {
+            "text": "内容",
+            "fontSize": "70px",
+            "lineHeight": "100px",
+            "textAlign": "center",
+            "lazy": true,
+            "fontWeight": "bold"
+          },
+          "el": "wc29"
+        }
+      ],
+      "el": "wc27"
+    },
+    {
+      "name": "LinkText",
+      "style": {
+        "position": "relative",
+        "width": "200px",
+        "height": "36px",
+        "overflow": "visible",
+        "left": "1198px",
+        "display": "block",
+        "backgroundSize": "auto 100%",
+        "backgroundRepeat": "repeat",
+        "marginRight": "",
+        "bottom": "600px"
       },
       "props": {
         "text": "默认文本",
-        "fontSize": "44px",
+        "fontSize": "24px",
         "lineHeight": "36px",
         "textAlign": "center",
+        "lazy": true,
+        "color": "rgba(29,4,117,1)",
+        "fontWeight": "bold"
+      },
+      "el": "wc31"
+    },
+    {
+      "name": "Image",
+      "style": {
+        "position": "relative",
+        "width": "685px",
+        "height": "193px",
+        "marginTop": "0px",
+        "left": "464px",
+        "top": "-194px"
+      },
+      "props": {
+        "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
+        "blank": true,
         "lazy": true
       },
-      "el": "wc25"
+      "el": "wc32"
     }
   ]
 }

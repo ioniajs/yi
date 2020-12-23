@@ -114,6 +114,7 @@ const Toolbar = () => {
         <ToolButton title="预览" icon="iconPreview" onClick={showPage} />
         <ToolButton title="保存" icon="iconsave" onClick={savePage} />
       </div>
+      <div>JEECMS可视化模板编辑器v1.0版</div>
     </div>
   );
 };

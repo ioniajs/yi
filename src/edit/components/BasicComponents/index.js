@@ -181,21 +181,26 @@ export default () => {
           <Collapse>
             <Panel header="容器">
               <div className={`${styles.vesselComponents}`}>
-                {vesselComponents.map((a, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className={`${
-                        index < 4
-                          ? styles.vesselComponentsButtonTop
-                          : styles.vesselComponentsButtonBottom
-                      }`}
-                    >
-                      <i className={`iconfont ${a.icon}`} />
-                      <p>{a.title}</p>
-                    </div>
-                  );
-                })}
+                {
+                    Object.entries(menu).map(([compName,config], index) => {
+                        if(config.type === "vessel") {
+                            return (
+                                <div key={compName + index}
+                                className={`${
+                                    // index < 4
+                                       styles.vesselComponentsButtonTop
+                                    //   : styles.vesselComponentsButtonBottom
+                                  }`}
+                                  draggable
+                                  onDragStart={() => chooseDragComp(config)}
+                                >
+                                    <i className={`iconfont ${config.icon}`} />
+                                    <p>{config.name}</p>
+                                </div>
+                            )
+                        }
+                    })
+                }
               </div>
             </Panel>
           </Collapse>
@@ -203,22 +208,23 @@ export default () => {
             <Panel header="基础元件">
               <div className={`${styles.basicComponent}`}>
                 {Object.entries(menu).map(([compName, config], index) => {
-                  return (
-                    <div
-                      key={compName + index}
-                      className={`${
-                        index < 16
-                          ? styles.basicComponentButton
-                          : styles.basicComponentButtonBottom
-                      }`}
-                      draggable
-                      onDragStart={() => chooseDragComp(config)}
-                    >
-                      <i className={`iconfont ${config.icon}`} />
-                      <p>{config.name}</p>
-                    </div>
-                  );
-                })}
+                    if(config.type === "element") {
+                        return (
+                            <div
+                            key={compName + index}
+                            className={`${
+                                // index < 16
+                                styles.basicComponentButton
+                                //   : styles.basicComponentButtonBottom
+                            }`}
+                            draggable
+                            onDragStart={() => chooseDragComp(config)}
+                            >
+                            <i className={`iconfont ${config.icon}`} />
+                            <p>{config.name}</p>
+                            </div>
+                        );
+                }})}
               </div>
             </Panel>
           </Collapse>

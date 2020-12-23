@@ -1,5 +1,6 @@
 {
     "name": "内嵌页",
+    "type": "vessel",
     "staticProps": [
         {
             "name": "内嵌页链接",
