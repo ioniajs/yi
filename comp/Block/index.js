@@ -1,5 +1,5 @@
 /**
- * @description 文本组件
+ * @description 区块组件
  */
 import React from 'react';
 
