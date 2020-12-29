@@ -1,5 +1,7 @@
-import React from "react";
-import { Tree } from "antd";
+import React, { useState } from "react";
+import { Tree, Modal } from "antd";
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import CreatePage from './CreatePage';
 import "./index.less";
 
 const { DirectoryTree } = Tree;
@@ -8,7 +10,7 @@ const treeData = [
   {
     title: "首页",
     key: "home",
-    isLeaf: true,
+    // isLeaf: true,
   },
   {
     title: "新闻",
@@ -29,11 +31,13 @@ const PageNav = () => {
     console.log("Trigger Expand");
   };
 
+  const [deletePage, setDeletePage] = useState(false)
+  const [createPage, setCreatePage] = useState(false)
   return (
     <div className="page-nav">
       <div className="page-nav-header">
         所有页面
-        <i className="iconfont iconAdd page-nav-icon" />
+        <i onClick={() => setCreatePage(true)} className="iconfont iconAdd page-nav-icon" />
       </div>
       <DirectoryTree
         className="page-tree"
@@ -50,12 +54,17 @@ const PageNav = () => {
               <div>
                 <i className="iconfont iconedit page-tree-icon" />
                 <i className="iconfont iconcopy page-tree-icon" />
-                <i className="iconfont icondelete-bin-line page-tree-icon" />
+                <i onClick={() => setDeletePage(true)} className="iconfont icondelete-bin-line page-tree-icon" />
               </div>
             )}
           </div>
         )}
       />
+    <Modal className="page-delete-modal" title="提示" visible={deletePage} onOk={() => setDeletePage(false)} okText="确定" cancelText="取消">
+      <ExclamationCircleOutlined />
+      <p className="page-modal-delete-content-p">确定要删除该页面？删除后不能恢复。</p>
+    </Modal>
+    <CreatePage setCreatePage={setCreatePage} createPage={createPage}  />
     </div>
   );
 };

@@ -54,6 +54,17 @@
                     "value": "right"
                 }
             ]
+        },
+        {
+            "name": "点击链接",
+            "prop": "link",
+            "size": "long"
+        },
+        {
+            "name": "是否在新窗口打开链接",
+            "prop": "blank",
+            "type": "switch",
+            "size": "long"
         }
     ],
     "defaultStyles": {
@@ -65,7 +76,9 @@
         "text": "链接文本",
         "fontSize": "20px",
         "lineHeight": "36px",
-        "textAlign": "center"
+        "textAlign": "center",
+        "blank": true,
+        "href": "http://www.baidu.com"
     },
     "hasChild": false,
     "canResizeByMouse": true
