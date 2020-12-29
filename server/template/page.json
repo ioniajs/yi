@@ -163,20 +163,90 @@
       "el": "wc39"
     },
     {
-      "name": "Iframe",
+      "name": "Image",
       "style": {
         "position": "relative",
-        "width": "1830px",
-        "height": "1032px",
-        "left": "83px",
-        "top": "-578px"
+        "width": "743px",
+        "height": "670px",
+        "marginTop": "0px",
+        "left": "696px",
+        "top": "-520px"
       },
       "props": {
-        "scrolling": true,
-        "lazy": true,
-        "src": "http://www.baidu.com"
+        "src": "https://img10.360buyimg.com/babel/s590x470_jfs/t1/153574/37/11525/282567/5fe59d38Ec36e1b2a/7a2c9a5abce65594.jpg.webp",
+        "blank": true,
+        "lazy": true
       },
-      "el": "wc40"
+      "el": "wc41"
+    },
+    {
+      "name": "LinkText",
+      "style": {
+        "position": "relative",
+        "width": "200px",
+        "height": "30px",
+        "left": "1692px",
+        "top": "-916px"
+      },
+      "props": {
+        "text": "链接打算",
+        "fontSize": "20px",
+        "lineHeight": "36px",
+        "textAlign": "center",
+        "lazy": true,
+        "link": "http://www.baidu.com",
+        "blank": false
+      },
+      "el": "wc42"
+    },
+    {
+      "name": "Text",
+      "style": {
+        "position": "relative",
+        "width": "200px",
+        "left": "1465px",
+        "top": "-977px"
+      },
+      "props": {
+        "text": "默认文本",
+        "fontSize": "24px",
+        "lineHeight": "36px",
+        "textAlign": "center",
+        "lazy": true
+      },
+      "el": "wc43"
+    },
+    {
+      "name": "Block",
+      "style": {
+        "position": "relative",
+        "width": "646px",
+        "height": "200px",
+        "left": "763px",
+        "top": "-503px",
+        "backgroundColor": "rgba(208,2,27,1)"
+      },
+      "props": {
+        "lazy": true
+      },
+      "el": "wc45"
+    },
+    {
+      "name": "Image",
+      "style": {
+        "position": "relative",
+        "width": "180px",
+        "height": "180px",
+        "marginTop": "0px",
+        "left": "1159px",
+        "top": "-694px"
+      },
+      "props": {
+        "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
+        "blank": true,
+        "lazy": true
+      },
+      "el": "wc46"
     }
   ]
 }

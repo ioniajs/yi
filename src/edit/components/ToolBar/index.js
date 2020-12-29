@@ -23,6 +23,7 @@ const Toolbar = () => {
     state: { choose },
   } = useContext(storeContext);
   const {
+    canvasSetting,
     paintScale,
     changeSlider,
     changeSourceCodeMode,
@@ -111,6 +112,7 @@ const Toolbar = () => {
           />
         </div>
         {/* <ToolButton title="画布设置" icon="iconSetup" /> */}
+        <ToolButton title="画布设置" icon="iconSetup" onClick={canvasSetting}  />
         <ToolButton title="预览" icon="iconPreview" onClick={showPage} />
         <ToolButton title="保存" icon="iconsave" onClick={savePage} />
       </div>

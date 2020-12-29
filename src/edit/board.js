@@ -3,7 +3,7 @@
  * 包含四个模块（组件菜单、组件结构树图、搭建可视区、操作属性面板）
  * 此根组件处理画布渲染逻辑，以及定义了编辑器内全局通用事件与函数
  */
-import { Layout, Menu, message } from "antd";
+import { Layout, Menu, message, Modal } from "antd";
 import React, {
   useCallback,
   useContext,
@@ -44,6 +44,7 @@ const Board = () => {
   const paintMaskMove = useRef(); // 按住蒙层后方可移动画布坐标
   const [paintOffset, setPaintOffset] = useState({ width: 0, height: 0 }); // 包裹真实画布的一层实际可视区域容器，用来触发paintingWrap滚动
   const [paintScale, setPaintScale] = useState(0); // 画布缩放比例
+  const [canvasSetting, setCanvasSetting] = useState(false); // 画布设置弹窗
   const [paintMinHeight, setPaintMinHeight] = useState(0); // 画布实际最小高度
   const [contextMenu, setContextMenu] = useState(false); // 右键菜单展示
   const [sourceCodeMode, setSourceCodeMode] = useState(false); // 源码编辑模式
@@ -739,6 +740,7 @@ const Board = () => {
   const changeSourceCodeMode = () => {
     setSourceCodeMode(!sourceCodeMode);
   };
+
 
   useEffect(() => {
     if (sourceCodeMode) {
