@@ -1,6 +1,7 @@
 {
     "name": "内嵌页",
     "type": "vessel",
+    "icon": "iconBlock",
     "staticProps": [
         {
             "name": "内嵌页链接",
