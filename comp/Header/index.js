@@ -7,6 +7,6 @@ export default class Header extends React.PureComponent {
     render() {
         const { children } = this.props;
 
-    return <div className="wp-header">{children}</div>;
+    return <header className="wp-header">{children}</header>;
     }
 }

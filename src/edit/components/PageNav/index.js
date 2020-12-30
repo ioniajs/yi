@@ -3,6 +3,7 @@ import { Tree, Modal } from "antd";
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import CreatePage from './CreatePage';
 import "./index.less";
+import CopyPage from './CopyPage';
 
 const { DirectoryTree } = Tree;
 
@@ -33,6 +34,7 @@ const PageNav = () => {
 
   const [deletePage, setDeletePage] = useState(false)
   const [createPage, setCreatePage] = useState(false)
+  const [copyPage, setCopyPage] = useState(false)
   return (
     <div className="page-nav">
       <div className="page-nav-header">
@@ -53,7 +55,7 @@ const PageNav = () => {
             {node.isLeaf && (
               <div>
                 <i className="iconfont iconedit page-tree-icon" />
-                <i className="iconfont iconcopy page-tree-icon" />
+                <i onClick={() => setCopyPage(true)} className="iconfont iconcopy page-tree-icon" />
                 <i onClick={() => setDeletePage(true)} className="iconfont icondelete-bin-line page-tree-icon" />
               </div>
             )}
@@ -65,6 +67,7 @@ const PageNav = () => {
       <p className="page-modal-delete-content-p">确定要删除该页面？删除后不能恢复。</p>
     </Modal>
     <CreatePage setCreatePage={setCreatePage} createPage={createPage}  />
+    <CopyPage setCopyPage={setCopyPage} copyPage={copyPage}  />
     </div>
   );
 };

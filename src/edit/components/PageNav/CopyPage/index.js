@@ -12,7 +12,7 @@ const layout = {
 export default (props) => {
     const [pageType, setPageType] = useState(undefined)
     const [columnPage, setColumnPage] = useState(undefined)
-    const {createPage, setCreatePage} = props;
+    const {copyPage, setCopyPage} = props;
 
     const handleChang = (value) => {
         setPageType(value);
@@ -23,7 +23,7 @@ export default (props) => {
     }
 
     return (
-            <Modal className="page-create-modal" onOk={() => setCreatePage(false)} title="新增页面" visible={createPage} okText="保存" cancelText="取消" >
+            <Modal className="page-create-modal" onOk={() => setCopyPage(false)} title="复制页面" visible={copyPage} okText="保存" cancelText="取消" >
                 <Form {...layout}>
                     <Form.Item label="页面类型">
                         <Select placeholder="请选择" allowClear onChange={handleChang}>
@@ -94,9 +94,6 @@ export default (props) => {
                             </Form.Item>
                         )
                     }
-                    {/* {
-                        pageType === "4"  && ( <span>44444</span>)
-                    } */}
                 </Form>
             </Modal>
     )
