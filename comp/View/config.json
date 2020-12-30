@@ -1,6 +1,7 @@
 {
     "name": "布局",
     "type": "vessel",
+    "icon": "iconBlock",
     "staticProps": [
 
     ],
