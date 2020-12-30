@@ -7,6 +7,6 @@ export default class Footer extends React.PureComponent {
     render() {
         const { children } = this.props;
 
-    return <div className="wp-footer">{children}</div>;
+    return <footer className="wp-footer">{children}</footer>;
     }
 }

@@ -7,6 +7,6 @@ export default class NavBar extends React.PureComponent {
     render() {
         const { children } = this.props;
 
-    return <div className="wp-navbar">{children}</div>;
+    return <nav className="wp-navbar">{children}</nav>;
     }
 }
