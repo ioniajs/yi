@@ -45,7 +45,7 @@ export const ExpandModel = ({ showIcon, setShowIcon = true }) => {
       onClick={() => setShowIcon(!showIcon)}
       className={`${styles.floatModalRightButtonActive}`}
     >
-      <i className="iconfont iconright" />
+      <i className="iconfont iconleft" />
     </div>
   );
 };

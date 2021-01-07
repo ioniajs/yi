@@ -187,7 +187,8 @@
         "height": "119px",
         "left": "-1px",
         "top": "-919px",
-        "backgroundColor": "rgba(155,155,155,1)"
+        "backgroundColor": "rgba(136,124,124,1)",
+        "backgroundImage": "http//:www.baidu.com"
       },
       "props": {
         "lazy": true
@@ -216,10 +217,10 @@
       "name": "Iframe",
       "style": {
         "position": "relative",
-        "width": "500px",
-        "height": "510px",
+        "width": "504px",
+        "height": "511px",
         "left": "61px",
-        "top": "-666px"
+        "top": "-667px"
       },
       "props": {
         "scrolling": true,
@@ -266,8 +267,8 @@
       "style": {
         "position": "relative",
         "width": "200px",
-        "left": "284px",
-        "top": "-1605px"
+        "left": "288px",
+        "top": "-1611px"
       },
       "props": {
         "text": "导航组件",
@@ -315,10 +316,10 @@
       "style": {
         "position": "relative",
         "width": "434px",
-        "height": "382px",
+        "height": "430px",
         "marginTop": "0px",
-        "left": "579px",
-        "top": "-1568px"
+        "left": "591px",
+        "top": "-1538px"
       },
       "props": {
         "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
@@ -332,8 +333,8 @@
       "style": {
         "position": "relative",
         "width": "200px",
-        "left": "588px",
-        "top": "-1921px"
+        "left": "599px",
+        "top": "-1926px"
       },
       "props": {
         "text": "图片组件",
@@ -348,10 +349,11 @@
       "name": "LinkText",
       "style": {
         "position": "relative",
-        "width": "209px",
-        "height": "35px",
-        "left": "1047px",
-        "top": "-1874px"
+        "width": "1486",
+        "height": "35",
+        "left": "290px",
+        "top": "-2232px",
+        "marginLeft": ""
       },
       "props": {
         "text": "链接文本",
@@ -369,8 +371,8 @@
       "style": {
         "position": "relative",
         "width": "200px",
-        "left": "1181px",
-        "top": "-1429px"
+        "left": "302px",
+        "top": "-1487px"
       },
       "props": {
         "text": "页脚组件",
@@ -402,9 +404,9 @@
       "name": "ImageText",
       "style": {
         "position": "relative",
-        "width": "517px",
-        "left": "1318px",
-        "top": "-2084px",
+        "width": "535px",
+        "left": "1339px",
+        "top": "-2123px",
         "backgroundColor": "rgba(211,224,199,1)"
       },
       "props": {
@@ -453,8 +455,8 @@
       "name": "Text",
       "style": {
         "position": "relative",
-        "width": "211px",
-        "left": "1318px",
+        "width": "132px",
+        "left": "1350px",
         "top": "-2456px",
         "height": "39px"
       },
