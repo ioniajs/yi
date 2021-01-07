@@ -168,6 +168,16 @@ const Edit = () => {
   );
 };
 
+const selectAfter = (
+  <Select defaultValue="px" style={{width:"70px"}} onChange={(e) => console.log(e,'->')}>
+    <Option value="px">px</Option>
+    <Option value="rem">rem</Option>
+    <Option value="em">em</Option>
+    <Option value="vh">vh</Option>
+    <Option value="%">%</Option>
+  </Select>
+);
+
 const OptionBoard = ({ optionInputHasFocus }) => {
   const { pid, state, dispatch } = useContext(storeContext);
   const { tabIndex, choose, page, tree, menu } = state;
@@ -305,6 +315,18 @@ const OptionBoard = ({ optionInputHasFocus }) => {
               />
             </>
           );
+          case "inputSelect" :
+            return (
+              <>
+              <p>{name}</p>
+              <Input
+              addonAfter={selectAfter} value={curValue || ""}
+              onFocus={() => changeOptionInputHasFocus(true)}
+                onBlur={() => changeOptionInputHasFocus(false)}
+                onChange={(e) => changeValue(e, prop, type)}
+              />
+              </>
+            );
         default:
           return (
             <>
@@ -338,6 +360,10 @@ const OptionBoard = ({ optionInputHasFocus }) => {
 
       if (type === "text") {
         value = dynamic.target.value;
+      } else if ( type === "inputSelect") {
+        console.log(dynamic.target.value,'1111');
+
+        value = dynamic.target.value
       } else if (type === "select") {
         value = dynamic;
       } else if (type === "switch") {

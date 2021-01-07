@@ -1,11 +1,11 @@
 [{
     "name": "宽度",
     "prop": "width",
-    "type": "text"
+    "type": "inputSelect"
 }, {
     "name": "高度",
     "prop": "height",
-    "type": "text"
+    "type": "inputSelect"
 }, {
     "name": "溢出布局",
     "prop": "overflow",
