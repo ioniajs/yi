@@ -15,7 +15,13 @@
         },
         {
             "name": "文字大小",
-            "prop": "fontSize"
+            "prop": "fontSize",
+            "type": "inputSelect"
+        },
+        {
+            "name": "文字大小单位",
+            "prop": "fontSizeUnit",
+            "deafult": "px"
         },
         {
             "name": "文字加粗",
@@ -62,8 +68,9 @@
     },
     "defaultProps": {
         "text": "默认文本",
-        "fontSize": "24px",
-        "lineHeight": "36px",
+        "fontSize": "24",
+        "fontSizeUnit": "px",
+        "lineHeight": "36",
         "textAlign": "center"
     },
     "hasChild": false,
