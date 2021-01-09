@@ -170,8 +170,8 @@
         "position": "relative",
         "width": "100%",
         "height": "200px",
-        "left": "1px",
-        "top": "202px",
+        "left": "-0px",
+        "top": "203px",
         "backgroundColor": "rgba(221,217,245,1)"
       },
       "props": {
@@ -188,7 +188,7 @@
         "left": "-1px",
         "top": "-919px",
         "backgroundColor": "rgba(136,124,124,1)",
-        "backgroundImage": "http//:www.baidu.com"
+        "backgroundImage": ""
       },
       "props": {
         "lazy": true
@@ -349,10 +349,10 @@
       "name": "LinkText",
       "style": {
         "position": "relative",
-        "width": "1486",
+        "width": "200",
         "height": "35",
-        "left": "290px",
-        "top": "-2232px",
+        "left": "1px",
+        "top": "-2236px",
         "marginLeft": ""
       },
       "props": {
