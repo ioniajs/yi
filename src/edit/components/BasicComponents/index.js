@@ -230,27 +230,26 @@ export default () => {
           </Collapse>
           <Collapse>
             <Panel header="组合元件">
-              {
-                // searchImages.map((image, index) => {
-                //     return (
-                //         <div>
-                //             <img src={image.image} />
-                //             <p>{iamge.title}</p>
-                //         </div>
-                //     )
-                // })
-              }
-              {/* <div className={`${styles.compositionElement}`}>
-                                            <div className={`${styles.compositionElementSearchOne}`}>
-                                                <i className="iconfont iconsearchfor" />
-                                                <Input placeholder="请输入内容" />
-                                                <p>搜索一</p>
-                                            </div>
-                                            <div className={`${styles.compositionElementSearchTwo}`} >
-                                                <Search placeholder="请输入内容" enterButton="搜索" />
-                                                <p>搜索二</p>
-                                            </div>
-                                        </div> */}
+            <div className={`${styles.basicComponent}`}>
+                {Object.entries(menu).map(([compName, config], index) => {
+                    if(config.type === "combination") {
+                        return (
+                            <div
+                            key={compName + index}
+                            className={`${
+                                // index < 16
+                                styles.basicComponentButton
+                                //   : styles.basicComponentButtonBottom
+                            }`}
+                            draggable
+                            onDragStart={() => chooseDragComp(config)}
+                            >
+                            <i className={`iconfont ${config.icon}`} />
+                            <p>{config.name}</p>
+                            </div>
+                        );
+                }})}
+              </div>
             </Panel>
           </Collapse>
         </div>
