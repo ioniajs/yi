@@ -1,7 +1,8 @@
 
 {
     "name": "图文混合",
-    "type":"element",
+    "type":"combination",
+    "icon": "iconpage",
     "staticProps": [
 
     ],
