@@ -233,12 +233,18 @@ const OptionBoard = ({ optionInputHasFocus }) => {
   }, [menu, tree, choose, tabIndex, page]);
 
   const renderItemByType = useCallback(
-    ({ name, prop, type = "text", option, mirrorValue }, optionName) => {
+    ({ name, prop, type = "text", option, mirrorValue }, optionName, fontSizeUnit) => {
+      // console.log(name,'11111');
+      // console.log(prop,'222');
+      // console.log(option,'333');
+      // console.log(mirrorValue,'444');
+      // console.log(optionName,'5555');
       let curValue;
       if (optionName === 0) {
         curValue = page[prop];
       } else {
         curValue = chooseObj.current[optionName][prop];
+        console.log(chooseObj.current[optionName][prop],'dadasdas');
       }
 
       switch (type) {
@@ -316,18 +322,18 @@ const OptionBoard = ({ optionInputHasFocus }) => {
               />
             </>
           );
-          case "inputSelect" :
-            return (
-              <>
-              <p>{name}</p>
-              <Input
-                addonAfter={selectAfter} value={curValue || ""}
-                onFocus={() => changeOptionInputHasFocus(true)}
-                onBlur={() => changeOptionInputHasFocus(false)}
-                onChange={(e) => changeValue(e, prop, type)}
-              />
-              </>
-            );
+        case "inputSelect" :
+          return (
+            <>
+            <p>{name}</p>
+            <Input
+              addonAfter={selectAfter} value={curValue || ""}
+              onFocus={() => changeOptionInputHasFocus(true)}
+              onBlur={() => changeOptionInputHasFocus(false)}
+              onChange={(e) => changeValue(e, prop, type)}
+            />
+            </>
+          );
         default:
           return (
             <>

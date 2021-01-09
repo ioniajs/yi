@@ -165,37 +165,6 @@
       "el": "wc47"
     },
     {
-      "name": "Footer",
-      "style": {
-        "position": "relative",
-        "width": "100%",
-        "height": "200px",
-        "left": "-0px",
-        "top": "203px",
-        "backgroundColor": "rgba(221,217,245,1)"
-      },
-      "props": {
-        "lazy": true
-      },
-      "el": "wc49"
-    },
-    {
-      "name": "Header",
-      "style": {
-        "position": "relative",
-        "width": "100%",
-        "height": "119px",
-        "left": "-1px",
-        "top": "-919px",
-        "backgroundColor": "rgba(136,124,124,1)",
-        "backgroundImage": ""
-      },
-      "props": {
-        "lazy": true
-      },
-      "el": "wc50"
-    },
-    {
       "name": "Text",
       "style": {
         "position": "relative",
@@ -214,55 +183,6 @@
       "el": "wc51"
     },
     {
-      "name": "Iframe",
-      "style": {
-        "position": "relative",
-        "width": "504px",
-        "height": "511px",
-        "left": "61px",
-        "top": "-667px"
-      },
-      "props": {
-        "scrolling": true,
-        "lazy": true,
-        "src": "https://www.jeecms.com/"
-      },
-      "el": "wc52"
-    },
-    {
-      "name": "Text",
-      "style": {
-        "position": "relative",
-        "width": "200px",
-        "left": "175px",
-        "top": "-948px"
-      },
-      "props": {
-        "text": "内嵌页组件",
-        "fontSize": "24px",
-        "lineHeight": "36px",
-        "textAlign": "center",
-        "lazy": true,
-        "color": "rgba(80,227,194,1)"
-      },
-      "el": "wc53"
-    },
-    {
-      "name": "NavBar",
-      "style": {
-        "position": "relative",
-        "width": "1910px",
-        "height": "167px",
-        "left": "9px",
-        "top": "-1506px",
-        "backgroundColor": "rgba(243,218,177,1)"
-      },
-      "props": {
-        "lazy": true
-      },
-      "el": "wc54"
-    },
-    {
       "name": "Text",
       "style": {
         "position": "relative",
@@ -278,21 +198,6 @@
         "lazy": true
       },
       "el": "wc55"
-    },
-    {
-      "name": "View",
-      "style": {
-        "position": "relative",
-        "width": "100%",
-        "height": "120px",
-        "left": "-1px",
-        "top": "-1541px",
-        "backgroundColor": "rgba(146,120,79,1)"
-      },
-      "props": {
-        "lazy": true
-      },
-      "el": "wc56"
     },
     {
       "name": "Text",
@@ -327,23 +232,6 @@
         "lazy": true
       },
       "el": "wc58"
-    },
-    {
-      "name": "Text",
-      "style": {
-        "position": "relative",
-        "width": "200px",
-        "left": "599px",
-        "top": "-1926px"
-      },
-      "props": {
-        "text": "图片组件",
-        "fontSize": "24px",
-        "lineHeight": "36px",
-        "textAlign": "center",
-        "lazy": true
-      },
-      "el": "wc59"
     },
     {
       "name": "LinkText",
@@ -382,74 +270,6 @@
         "lazy": true
       },
       "el": "wc61"
-    },
-    {
-      "name": "Text",
-      "style": {
-        "position": "relative",
-        "width": "200px",
-        "left": "1044px",
-        "top": "-1674px"
-      },
-      "props": {
-        "text": "默认文本",
-        "fontSize": "24px",
-        "lineHeight": "36px",
-        "textAlign": "center",
-        "lazy": true
-      },
-      "el": "wc62"
-    },
-    {
-      "name": "ImageText",
-      "style": {
-        "position": "relative",
-        "width": "535px",
-        "left": "1339px",
-        "top": "-2123px",
-        "backgroundColor": "rgba(211,224,199,1)"
-      },
-      "props": {
-        "lazy": true
-      },
-      "children": [
-        {
-          "name": "Image",
-          "style": {
-            "position": "relative",
-            "width": "327px",
-            "height": "360px",
-            "marginTop": "0px",
-            "marginLeft": "auto",
-            "marginRight": "auto",
-            "left": "74px",
-            "top": "21px"
-          },
-          "props": {
-            "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
-            "blank": true,
-            "lazy": true
-          },
-          "el": "wc64"
-        },
-        {
-          "name": "Text",
-          "style": {
-            "position": "relative",
-            "width": "100%"
-          },
-          "props": {
-            "text": "内容",
-            "fontSize": "70px",
-            "lineHeight": "100px",
-            "textAlign": "center",
-            "lazy": true,
-            "fontWeight": "bold"
-          },
-          "el": "wc65"
-        }
-      ],
-      "el": "wc63"
     },
     {
       "name": "Text",
