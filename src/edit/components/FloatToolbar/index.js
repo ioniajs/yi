@@ -54,10 +54,6 @@ const FloatToolbar = () => {
   const [active, setActive] = useState(1);
   const [showIcon, setShowIcon] = useState(true);
 
-  useEffect(() => {
-    setShowIcon(true);
-  }, [active]);
-
   return (
     <>
       <div>
@@ -65,31 +61,46 @@ const FloatToolbar = () => {
           <ToolButton
             icon="iconpage"
             active={active === 1}
-            onClick={() => setActive(1)}
+            onClick={() => {
+              setShowIcon(true);
+              setActive(1);
+            }}
             title="所有分页"
           />
           <ToolButton
             icon="iconelement"
             active={active === 2}
-            onClick={() => setActive(2)}
+            onClick={() => {
+              setShowIcon(true);
+              setActive(2);
+            }}
             title="基础元件"
           />
           <ToolButton
             icon="iconComponent"
             active={active === 3}
-            onClick={() => setActive(3)}
+            onClick={() => {
+              setShowIcon(true);
+              setActive(3);
+            }}
             title="组件库"
           />
           <ToolButton
             icon="iconIconlibrary"
             active={active === 4}
-            onClick={() => setActive(4)}
+            onClick={() => {
+              setShowIcon(true);
+              setActive(4);
+            }}
             title="图标库"
           />
           <ToolButton
             icon="iconmine"
             active={active === 5}
-            onClick={() => setActive(5)}
+            onClick={() => {
+              setShowIcon(true);
+              setActive(5);
+            }}
             title="我的"
           />
         </div>

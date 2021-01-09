@@ -442,7 +442,7 @@ const Board = () => {
         message.warn("目标位置不允许有子节点");
         return;
       }
-      putCmpIntoArea();
+      putCmpIntoArea(e);
     }
   }, []);
 
@@ -498,10 +498,18 @@ const Board = () => {
   }, []);
 
   // 释放拖拽，将新组建加入页面配置
-  const putCmpIntoArea = useCallback(() => {
+  const putCmpIntoArea = useCallback((e) => {
     const { tree, menu } = stateRef.current;
+
     // 生成新组件的配置
     const compObj = creatPart(dragCmpConfig.current, menu);
+
+    const y = targetCmpDom.current.offsetTop + e.clientY - 50;
+    const x = targetCmpDom.current.offsetLeft + e.clientX;
+
+    compObj.style.position = "absolute";
+    compObj.style.top = y + "px";
+    compObj.style.left = x + "px";
 
     let nextTree = tree;
 
@@ -740,7 +748,6 @@ const Board = () => {
   const changeSourceCodeMode = () => {
     setSourceCodeMode(!sourceCodeMode);
   };
-
 
   useEffect(() => {
     if (sourceCodeMode) {

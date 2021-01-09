@@ -1,7 +1,13 @@
 /**
  * @description 编辑器属性操作面板
  */
-import React, { useContext, useCallback, useRef, useMemo, useState } from "react";
+import React, {
+  useContext,
+  useCallback,
+  useRef,
+  useMemo,
+  useState,
+} from "react";
 import storeContext, { EditFuncContext } from "../context";
 import { searchTree, EnumEdit } from "./common";
 import { record } from "./record";
@@ -168,15 +174,18 @@ const Edit = () => {
   );
 };
 
-
 const OptionBoard = ({ optionInputHasFocus }) => {
   const { pid, state, dispatch } = useContext(storeContext);
   const { tabIndex, choose, page, tree, menu } = state;
-  const [ pxValue, setPxValue ] = useState('px')
+  const [unit, setUnit] = useState("px");
   const chooseObj = useRef();
 
   const selectAfter = (
-    <Select defaultValue="px" style={{width:"70px"}} onChange={(e) => setPxValue(e)}>
+    <Select
+      defaultValue="px"
+      style={{ width: "70px" }}
+      onChange={(e) => setUnit(e)}
+    >
       <Option value="px">px</Option>
       <Option value="rem">rem</Option>
       <Option value="em">em</Option>
@@ -393,7 +402,7 @@ const OptionBoard = ({ optionInputHasFocus }) => {
       } else {
         const nextTree = searchTree(tree, choose, EnumEdit.change, {
           tabIndex,
-          items:[{ key, value }],
+          items: [{ key, value }],
         });
         dispatch({
           type: "UPDATE_TREE",
