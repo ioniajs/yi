@@ -1,7 +1,7 @@
 /**
  * @description 编辑器属性操作面板
  */
-import React, { useContext, useCallback, useRef, useMemo } from "react";
+import React, { useContext, useCallback, useRef, useMemo, useState } from "react";
 import storeContext, { EditFuncContext } from "../context";
 import { searchTree, EnumEdit } from "./common";
 import { record } from "./record";
@@ -168,21 +168,22 @@ const Edit = () => {
   );
 };
 
-const selectAfter = (
-  <Select defaultValue="px" style={{width:"70px"}} onChange={(e) => console.log(e,'->')}>
-    <Option value="px">px</Option>
-    <Option value="rem">rem</Option>
-    <Option value="em">em</Option>
-    <Option value="vh">vh</Option>
-    <Option value="%">%</Option>
-  </Select>
-);
 
 const OptionBoard = ({ optionInputHasFocus }) => {
   const { pid, state, dispatch } = useContext(storeContext);
   const { tabIndex, choose, page, tree, menu } = state;
+  const [ pxValue, setPxValue ] = useState('px')
   const chooseObj = useRef();
 
+  const selectAfter = (
+    <Select defaultValue="px" style={{width:"70px"}} onChange={(e) => setPxValue(e)}>
+      <Option value="px">px</Option>
+      <Option value="rem">rem</Option>
+      <Option value="em">em</Option>
+      <Option value="vh">vh</Option>
+      <Option value="%">%</Option>
+    </Select>
+  );
   // 渲染面板配置列表
   const renderOption = useCallback(() => {
     let optionList;
@@ -320,8 +321,8 @@ const OptionBoard = ({ optionInputHasFocus }) => {
               <>
               <p>{name}</p>
               <Input
-              addonAfter={selectAfter} value={curValue || ""}
-              onFocus={() => changeOptionInputHasFocus(true)}
+                addonAfter={selectAfter} value={curValue || ""}
+                onFocus={() => changeOptionInputHasFocus(true)}
                 onBlur={() => changeOptionInputHasFocus(false)}
                 onChange={(e) => changeValue(e, prop, type)}
               />
@@ -352,7 +353,6 @@ const OptionBoard = ({ optionInputHasFocus }) => {
     // 释放当前编辑输入框状态，开启撤销、恢复快捷键权限
     optionInputHasFocus.current = type;
   }, []);
-
   // 改变面板属性值的回调
   const changeValue = useCallback(
     (dynamic, key, type) => {
@@ -360,10 +360,8 @@ const OptionBoard = ({ optionInputHasFocus }) => {
 
       if (type === "text") {
         value = dynamic.target.value;
-      } else if ( type === "inputSelect") {
-        console.log(dynamic.target.value,'1111');
-
-        value = dynamic.target.value
+      } else if (type === "inputSelect") {
+        value = dynamic.target.value;
       } else if (type === "select") {
         value = dynamic;
       } else if (type === "switch") {
@@ -389,9 +387,8 @@ const OptionBoard = ({ optionInputHasFocus }) => {
       } else {
         const nextTree = searchTree(tree, choose, EnumEdit.change, {
           tabIndex,
-          items: [{ key, value }],
+          items:[{ key, value }],
         });
-
         dispatch({
           type: "UPDATE_TREE",
           payload: nextTree,
