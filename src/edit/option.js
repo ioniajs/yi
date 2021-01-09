@@ -242,7 +242,7 @@ const OptionBoard = ({ optionInputHasFocus }) => {
   }, [menu, tree, choose, tabIndex, page]);
 
   const renderItemByType = useCallback(
-    ({ name, prop, type = "text", option, mirrorValue }, optionName, fontSizeUnit) => {
+    ({ name, prop, type = "text", option, mirrorValue }, optionName,) => {
       // console.log(name,'11111');
       // console.log(prop,'222');
       // console.log(option,'333');
