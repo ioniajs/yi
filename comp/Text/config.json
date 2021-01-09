@@ -68,9 +68,9 @@
     },
     "defaultProps": {
         "text": "默认文本",
-        "fontSize": "24",
+        "fontSize": "24px",
         "fontSizeUnit": "px",
-        "lineHeight": "36",
+        "lineHeight": "36px",
         "textAlign": "center"
     },
     "hasChild": false,
