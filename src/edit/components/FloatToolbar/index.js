@@ -65,7 +65,7 @@ const FloatToolbar = () => {
               setShowIcon(true);
               setActive(1);
             }}
-            title="所有分页"
+            title="所有页面"
           />
           <ToolButton
             icon="iconelement"
