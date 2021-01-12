@@ -7,11 +7,10 @@ export const ToolButton = ({ icon, title, onClick }) => (
   <div className="tool-button">
     <Tooltip
       title={
-        <span style={{ color: "#333333", fontSize: 14, fontWeight: 400 }}>
+        <span style={{ color: "#fff", fontSize: 14, fontWeight: 400 }}>
           {title}
         </span>
       }
-      color="#fff"
     >
       <i className={`iconfont ${icon}`} onClick={onClick} />
     </Tooltip>
@@ -112,7 +111,7 @@ const Toolbar = () => {
           />
         </div>
         {/* <ToolButton title="画布设置" icon="iconSetup" /> */}
-        <ToolButton title="画布设置" icon="iconSetup" onClick={canvasSetting}  />
+        <ToolButton title="画布设置" icon="iconSetup" onClick={canvasSetting} />
         <ToolButton title="预览" icon="iconPreview" onClick={showPage} />
         <ToolButton title="保存" icon="iconsave" onClick={savePage} />
       </div>
