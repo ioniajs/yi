@@ -1,6 +1,6 @@
 {
-    "name": "纯文本",
-    "icon": "icontext",
+    "name": "段落",
+    "icon": "iconparagraph",
     "type":"element",
     "staticProps": [
         {
@@ -67,10 +67,10 @@
         "width": "200"
     },
     "defaultProps": {
-        "text": "默认文本",
+        "text": "段落标签",
         "fontSize": "24",
         "fontSizeUnit": "px",
-        "lineHeight": "36",
+        "lineHeight": "36px",
         "textAlign": "center"
     },
     "hasChild": false,
