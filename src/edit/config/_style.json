@@ -1,6 +1,6 @@
 [{
     "name": "宽度",
-    "prop": "width",
+    "prop": "optionWidth",
     "type": "inputSelect"
 }, {
     "name": "高度",
