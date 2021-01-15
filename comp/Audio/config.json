@@ -1,0 +1,22 @@
+{
+    "name": "音频",
+    "type": "element",
+    "icon": "iconAudio",
+    "staticProps": [
+        {
+            "name": "音频地址",
+            "prop": "src",
+            "size": "long"
+        }
+    ],
+    "defaultStyles": {
+        "position": "relative",
+        "width": "200px",
+        "height": "100px"
+    },
+    "defaultProps": {
+        "src": "http://www.wantuju.com/upload/video/2021-01-12/346056e5-ddc1-47f7-865b-a6c4d99ead53.mp4"
+    },
+    "hasChild": false,
+    "canResizeByMouse": true
+}

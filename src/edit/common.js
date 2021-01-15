@@ -52,10 +52,16 @@ const searchTree = (arr, el, type, expand) => {
                         return child;
                     case EnumEdit.change:
                         var { tabIndex, items } = expand;
-
                         items.forEach(({ key, value }) => {
                             if (tabIndex === 1) {
-                                child.style[key] = value;
+                                console.log(value+child.props.fontSizeUnit)
+                                if(key === 'optionWidth'){
+                                    child.style.width = value+child.props.fontSizeUnit;
+                                    // child.style.height = value+child.props.fontSizeUnit;
+                                    child.style[key] = value;
+                                } else {
+                                    child.style[key] = value;
+                                }
                             } else if (tabIndex === 2) {
                                 child.props[key] = value;
                             }
@@ -141,7 +147,10 @@ const creatPart = (initConfig, menu) => {
 
     return {
         name: compName,
-        style: defaultStyles,
+        style: {
+            ...defaultStyles,
+            width:defaultStyles.optionWidth+defaultProps.fontSizeUnit
+        },
         props: defaultProps,
         children: !Array.isArray(defaultChildren) ? undefined : defaultChildren.map((childConfig) => creatPart(childConfig, menu))
     };

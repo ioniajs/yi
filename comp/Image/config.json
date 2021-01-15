@@ -1,0 +1,35 @@
+{
+    "name": "图片",
+    "icon": "iconimage",
+    "type":"element",
+    "staticProps": [
+        {
+            "name": "点击链接",
+            "prop": "link",
+            "size": "long"
+        },
+        {
+            "name": "是否在新窗口打开链接",
+            "prop": "blank",
+            "type": "switch",
+            "size": "long"
+        },
+        {
+            "name": "图片地址",
+            "prop": "src",
+            "size": "long"
+        }
+    ],
+    "defaultStyles": {
+        "position": "relative",
+        "width": "180px",
+        "height": "180px",
+        "marginTop": "0px"
+    },
+    "defaultProps": {
+        "src": "http://r.photo.store.qq.com/psb?/V14dALyK4PrHuj/h50SMf97hSy.BJlJw31fagrw.NUaJD83gvydmoGN77w!/r/dLgAAAAAAAAA",
+        "blank": true
+    },
+    "hasChild": false,
+    "canResizeByMouse": true
+}

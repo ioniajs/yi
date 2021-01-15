@@ -372,7 +372,6 @@ const OptionBoard = ({ optionInputHasFocus }) => {
   const changeValue = useCallback(
     (dynamic, key, type) => {
       let value;
-
       if (type === "text") {
         value = dynamic.target.value;
       } else if (type === "inputSelect") {
@@ -393,7 +392,6 @@ const OptionBoard = ({ optionInputHasFocus }) => {
 
         value = `rgba(${r},${g},${b},${a})`;
       }
-
       if (tabIndex === 0) {
         dispatch({
           type: "UPDATE_PAGE_INFO",
