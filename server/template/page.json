@@ -288,6 +288,51 @@
         "lazy": true
       },
       "el": "wc66"
+    },
+    {
+      "name": "Video",
+      "style": {
+        "position": "absolute",
+        "width": "947px",
+        "height": "539px",
+        "top": "98px",
+        "left": "530px"
+      },
+      "props": {
+        "src": "http://www.wantuju.com/upload/video/2021-01-12/346056e5-ddc1-47f7-865b-a6c4d99ead53.mp4",
+        "lazy": true
+      },
+      "el": "wc71"
+    },
+    {
+      "name": "Audio",
+      "style": {
+        "position": "absolute",
+        "width": null,
+        "height": "100px",
+        "top": "297px",
+        "left": "669px"
+      },
+      "props": {
+        "src": "http://www.wantuju.com/upload/video/2021-01-12/346056e5-ddc1-47f7-865b-a6c4d99ead53.mp4",
+        "lazy": true
+      },
+      "el": "wc74"
+    },
+    {
+      "name": "Audio",
+      "style": {
+        "position": "absolute",
+        "width": null,
+        "height": "100px",
+        "top": "497px",
+        "left": "438px"
+      },
+      "props": {
+        "src": "http://www.wantuju.com/upload/video/2021-01-12/346056e5-ddc1-47f7-865b-a6c4d99ead53.mp4",
+        "lazy": true
+      },
+      "el": "wc75"
     }
   ]
 }
