@@ -4,17 +4,17 @@
  * @description 数据结构处理相关方法
  */
 const EnumEdit = {
-    add: Symbol(),         // 插入
-    choose: Symbol(),   // 选择
-    drag: Symbol(),     // 拖拽（树组件内部，并非菜单）
-    move: Symbol(),       // 移动
-    change: Symbol(),   // 编辑
-    delete: Symbol(),   // 删除
-    hide: Symbol(),       // 隐藏
-    maxKeyNum: Symbol()     // 首次加载计算当前页面配置key递增最大值
+  add: Symbol(), // 插入
+  choose: Symbol(), // 选择
+  drag: Symbol(), // 拖拽（树组件内部，并非菜单）
+  move: Symbol(), // 移动
+  change: Symbol(), // 编辑
+  delete: Symbol(), // 删除
+  hide: Symbol(), // 隐藏
+  maxKeyNum: Symbol(), // 首次加载计算当前页面配置key递增最大值
 };
 
-let maxKey;    // 记录全局生成的递增key(el)值
+let maxKey; // 记录全局生成的递增key(el)值
 
 /**
  * 编辑器内各种操作(EnumEdit)，都是对当前json tree的修改，然后触发compile重新渲染视图
@@ -26,87 +26,99 @@ let maxKey;    // 记录全局生成的递增key(el)值
  * @param {any} expand 拓展参数，不同操作类型入参不同
  */
 const searchTree = (arr, el, type, expand) => {
-    const root = {
-        children: arr
-    };
-    const queue = [root];
+  const root = {
+    children: arr,
+  };
+  const queue = [root];
 
-    let maxKeyNum = 0;
+  let maxKeyNum = 0;
 
-    // 找到匹配元素后根据搜索类型返回对应数据结构
-    while (queue.length > 0) {
-        const config = queue.pop();
-        const { children = [] } = config;
+  // 找到匹配元素后根据搜索类型返回对应数据结构
+  while (queue.length > 0) {
+    const config = queue.pop();
+    const { children = [] } = config;
 
-        for (let child of children) {
-            if (child.el === el) {
-                switch (type) {
-                    case EnumEdit.hide:
-                        if (child.hide) {
-                            delete child.hide;
-                        } else {
-                            child.hide = true;
-                        }
-                        return arr;
-                    case EnumEdit.choose:
-                        return child;
-                    case EnumEdit.change:
-                        var { tabIndex, items } = expand;
-
-                        items.forEach(({ key, value }) => {
-                            if (tabIndex === 1) {
-                                child.style[key] = value;
-                            } else if (tabIndex === 2) {
-                                child.props[key] = value;
-                            }
-                        });
-                        return arr;
-                    case EnumEdit.delete:
-                        children.splice(children.indexOf(child), 1);
-                        return [arr, child];
-                    case EnumEdit.add:
-                        rangeKey(expand);
-
-                        if (!Array.isArray(child.children)) {
-                            child.children = [];
-                        }
-                        child.children.push(expand);
-                        return [arr, expand.el];
-                    case EnumEdit.move:
-                        var { length } = children;
-                        var index = children.indexOf(child);
-                        var [moveChild] = children.splice(index, 1);
-
-                        children.splice(Math.min(Math.max(0, index + expand), length - 1), 0, moveChild);
-                        return arr;
-                    case EnumEdit.drag:
-                        var { dragNodeObj, relaPos } = expand;
-
-                        if (relaPos === 0) {
-                            if (!Array.isArray(child.children)) {
-                                child.children = [];
-                            }
-                            child.children.push(dragNodeObj);
-                        } else if (relaPos === -1) {
-                            children.splice(children.indexOf(child), 0, dragNodeObj);
-                        } else if (relaPos === 1) {
-                            children.splice(children.indexOf(child) + 1, 0, dragNodeObj);
-                        }
-                        return arr;
-                    default: return;
-                }
-            } else if (type === EnumEdit.maxKeyNum) {
-                maxKeyNum = Math.max(maxKeyNum, Number(child.el.replace(/^wc/, '')));
+    for (let child of children) {
+      if (child.el === el) {
+        switch (type) {
+          case EnumEdit.hide:
+            if (child.hide) {
+              delete child.hide;
+            } else {
+              child.hide = true;
             }
-            queue.push(child);
-        }
-    }
+            return arr;
+          case EnumEdit.choose:
+            return child;
+          case EnumEdit.change:
+            var { tabIndex, items } = expand;
+            items.forEach(({ key, index, value }) => {
+              if (index) tabIndex = index;
+              if (tabIndex === 1) {
+                console.log(key, value + child.props.fontSizeUnit);
+                if (key === "optionWidth") {
+                  child.style.width = value + child.props.fontSizeUnit;
+                  // child.style.height = value+child.props.fontSizeUnit;
+                  child.style[key] = value;
+                } else {
+                  child.style[key] = value;
+                }
+              } else if (tabIndex === 2) {
+                child.props[key] = value;
+              }
+            });
+            return arr;
+          case EnumEdit.delete:
+            children.splice(children.indexOf(child), 1);
+            return [arr, child];
+          case EnumEdit.add:
+            rangeKey(expand);
 
-    if (type === EnumEdit.maxKeyNum) {
-        maxKey = maxKeyNum;
-        return maxKeyNum;
+            if (!Array.isArray(child.children)) {
+              child.children = [];
+            }
+            child.children.push(expand);
+            return [arr, expand.el];
+          case EnumEdit.move:
+            var { length } = children;
+            var index = children.indexOf(child);
+            var [moveChild] = children.splice(index, 1);
+
+            children.splice(
+              Math.min(Math.max(0, index + expand), length - 1),
+              0,
+              moveChild
+            );
+            return arr;
+          case EnumEdit.drag:
+            var { dragNodeObj, relaPos } = expand;
+
+            if (relaPos === 0) {
+              if (!Array.isArray(child.children)) {
+                child.children = [];
+              }
+              child.children.push(dragNodeObj);
+            } else if (relaPos === -1) {
+              children.splice(children.indexOf(child), 0, dragNodeObj);
+            } else if (relaPos === 1) {
+              children.splice(children.indexOf(child) + 1, 0, dragNodeObj);
+            }
+            return arr;
+          default:
+            return;
+        }
+      } else if (type === EnumEdit.maxKeyNum) {
+        maxKeyNum = Math.max(maxKeyNum, Number(child.el.replace(/^wc/, "")));
+      }
+      queue.push(child);
     }
-    return null;
+  }
+
+  if (type === EnumEdit.maxKeyNum) {
+    maxKey = maxKeyNum;
+    return maxKeyNum;
+  }
+  return null;
 };
 
 /**
@@ -115,14 +127,14 @@ const searchTree = (arr, el, type, expand) => {
  * @param {treeNode} node 要插入的节点
  */
 const rangeKey = (node) => {
-    const newKey = ++maxKey;
+  const newKey = ++maxKey;
 
-    Object.assign(node, { el: `wc${newKey}` });
-    if (Array.isArray(node.children)) {
-        node.children.forEach((child, i) => {
-            rangeKey(child);
-        });
-    }
+  Object.assign(node, { el: `wc${newKey}` });
+  if (Array.isArray(node.children)) {
+    node.children.forEach((child, i) => {
+      rangeKey(child);
+    });
+  }
 };
 
 /**
@@ -131,25 +143,32 @@ const rangeKey = (node) => {
  * @param {menu} menu 菜单数据
  */
 const creatPart = (initConfig, menu) => {
-    const config = JSON.parse(JSON.stringify(menu[initConfig.compName]));
+  const config = JSON.parse(JSON.stringify(menu[initConfig.compName]));
 
-    initConfig.defaultProps = Object.assign(config.defaultProps, { lazy: true }, initConfig.mergeProps);
-    initConfig.defaultStyles = Object.assign(config.defaultStyles, initConfig.mergeStyles);
-    Object.assign(config, initConfig);
+  initConfig.defaultProps = Object.assign(
+    config.defaultProps,
+    { lazy: true },
+    initConfig.mergeProps
+  );
+  initConfig.defaultStyles = Object.assign(
+    config.defaultStyles,
+    initConfig.mergeStyles
+  );
+  Object.assign(config, initConfig);
 
-    const { compName, defaultStyles, defaultProps, defaultChildren } = config;
+  const { compName, defaultStyles, defaultProps, defaultChildren } = config;
 
-    return {
-        name: compName,
-        style: defaultStyles,
-        props: defaultProps,
-        children: !Array.isArray(defaultChildren) ? undefined : defaultChildren.map((childConfig) => creatPart(childConfig, menu))
-    };
+  return {
+    name: compName,
+    style: {
+      ...defaultStyles,
+      width: defaultStyles.optionWidth + defaultProps.fontSizeUnit,
+    },
+    props: defaultProps,
+    children: !Array.isArray(defaultChildren)
+      ? undefined
+      : defaultChildren.map((childConfig) => creatPart(childConfig, menu)),
+  };
 };
 
-export {
-    EnumEdit,
-    searchTree,
-    rangeKey,
-    creatPart
-};
+export { EnumEdit, searchTree, rangeKey, creatPart };

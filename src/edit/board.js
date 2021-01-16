@@ -23,10 +23,77 @@ import Option from "./option";
 import { record } from "./record";
 import styleBd from "./style/changeBox.less";
 import style from "./style/index.less";
+import Selecto from "react-selecto";
+import Moveable from "react-moveable";
+import MoveableHelper from "moveable-helper";
 
 const IsMacOS = navigator.platform.match("Mac");
 const EnumId = { root: "root" }; // 画布id
 const PaintBoxMargin = 30; // 画布边距
+
+const Editable = {
+  name: "editable",
+  props: {},
+  events: {},
+  render(moveable) {
+    const rect = moveable.getRect();
+    const { pos2, target } = moveable.state;
+    const type = target?.dataset.componentType;
+
+    // use css for able
+    const EditableViewer = moveable.useCSS(
+      "div",
+      `
+      {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          will-change: transform;
+          transform-origin: 0px 0px;
+      }
+      .moveable-button {
+          width: 24px;
+          height: 24px;
+          margin-bottom: 4px;
+          background: #4af;
+          border-radius: 4px;
+          appearance: none;
+          border: 0;
+          color: white;
+          font-weight: bold;
+      }
+      `
+    );
+    // Add key (required)
+    // Add class prefix moveable-(required)
+    return (
+      <EditableViewer
+        key="editable-viewer"
+        className={"moveable-editable"}
+        style={{
+          transform: `translate(${pos2[0]}px, (${pos2[1]}px) rotate((${rect.rotation}deg) translate(10px)`,
+        }}
+      >
+        <button
+          className="moveable-button"
+          onClick={() => {
+            console.log(type);
+          }}
+        >
+          +
+        </button>
+        <button
+          className="moveable-button"
+          onClick={() => {
+            console.log(type);
+          }}
+        >
+          -
+        </button>
+      </EditableViewer>
+    );
+  },
+};
 
 const Board = () => {
   const { state, dispatch, forceUpdate } = useContext(storeContext);
@@ -55,6 +122,22 @@ const Board = () => {
   const checkedKeysList = useRef(new Set()); // 侧边栏树组件选中集合
   const expandedKeys = useRef(new Set()); // 侧边栏树组件展开的集合
 
+  // 选择节点
+  const [helper] = React.useState(() => {
+    return new MoveableHelper();
+  });
+  const [targets, setTargets] = React.useState([]);
+  const [elementGuidelines, setElementGuidelines] = React.useState([]);
+  const [frameMap] = React.useState(() => new Map());
+  const moveableRef = React.useRef(null);
+  const selectoRef = React.useRef(null);
+
+  const cubes = [];
+
+  for (let i = 0; i < 30; ++i) {
+    cubes.push(i);
+  }
+
   useEffect(() => {
     // 由于hooks自带闭包机制，浏览器全局事件回调函数的异步触发只能最初拿到绑定事件时注入的state
     // 每次状态有改变，就将state存到静态变量stateRef，在事件触发时取改变量代替state
@@ -64,6 +147,7 @@ const Board = () => {
 
   useEffect(() => {
     bindEditDomEvent();
+    setElementGuidelines([document.querySelector(".target")]);
   }, []);
 
   // 渲染外层容器后再计算出最合适的比例
@@ -187,57 +271,57 @@ const Board = () => {
     const { choose } = stateRef.current;
 
     // `空格`键
-    if (e.keyCode === 32 && !optionInputHasFocus.current) {
-      e.preventDefault();
-      spaceDown.current = true;
-      forceUpdate();
-      // windows下`DEL`键删除选中的可视区组件
-    } else if (!IsMacOS && e.keyCode === 46) {
-      e.preventDefault();
-      deleteNode();
-      // mac下`删除键`删除选中的可视区组件
-    } else if (IsMacOS && e.keyCode === 8) {
-      e.preventDefault();
-      deleteNode();
-      // `↑`向上箭头
-    } else if (e.keyCode === 38) {
-      if (choose) {
-        e.preventDefault();
-        changePosNode(-1);
-      }
-      // `↓`向下箭头
-    } else if (e.keyCode === 40) {
-      if (choose) {
-        e.preventDefault();
-        changePosNode(1);
-      }
-    } else if (IsMacOS ? e.metaKey : e.ctrlKey) {
-      // `CTRL + S`保存
-      if (e.keyCode === 83) {
-        e.preventDefault();
-        savePage();
-        // `CTRL + C`复制节点
-      } else if (e.keyCode === 67 && !optionInputHasFocus.current) {
-        e.preventDefault();
-        copeNode();
-        // `CTRL + X`剪切节点
-      } else if (e.keyCode === 88 && !optionInputHasFocus.current) {
-        e.preventDefault();
-        cutNode();
-        // `CTRL + V`粘贴节点
-      } else if (e.keyCode === 86 && !optionInputHasFocus.current) {
-        e.preventDefault();
-        pasteNode();
-        // `CTRL + Z`撤销
-      } else if (e.keyCode === 90 && !optionInputHasFocus.current) {
-        e.preventDefault();
-        returnEdit();
-        // `CTRL + Y`恢复
-      } else if (e.keyCode === 89 && !optionInputHasFocus.current) {
-        e.preventDefault();
-        resumeEdit();
-      }
-    }
+    // if (e.keyCode === 32 && !optionInputHasFocus.current) {
+    //   e.preventDefault();
+    //   spaceDown.current = true;
+    //   forceUpdate();
+    //   // windows下`DEL`键删除选中的可视区组件
+    // } else if (!IsMacOS && e.keyCode === 46) {
+    //   e.preventDefault();
+    //   deleteNode();
+    //   // mac下`删除键`删除选中的可视区组件
+    // } else if (IsMacOS && e.keyCode === 8) {
+    //   e.preventDefault();
+    //   deleteNode();
+    //   // `↑`向上箭头
+    // } else if (e.keyCode === 38) {
+    //   if (choose) {
+    //     e.preventDefault();
+    //     changePosNode(-1);
+    //   }
+    //   // `↓`向下箭头
+    // } else if (e.keyCode === 40) {
+    //   if (choose) {
+    //     e.preventDefault();
+    //     changePosNode(1);
+    //   }
+    // } else if (IsMacOS ? e.metaKey : e.ctrlKey) {
+    //   // `CTRL + S`保存
+    //   if (e.keyCode === 83) {
+    //     e.preventDefault();
+    //     savePage();
+    //     // `CTRL + C`复制节点
+    //   } else if (e.keyCode === 67 && !optionInputHasFocus.current) {
+    //     e.preventDefault();
+    //     copeNode();
+    //     // `CTRL + X`剪切节点
+    //   } else if (e.keyCode === 88 && !optionInputHasFocus.current) {
+    //     e.preventDefault();
+    //     cutNode();
+    //     // `CTRL + V`粘贴节点
+    //   } else if (e.keyCode === 86 && !optionInputHasFocus.current) {
+    //     e.preventDefault();
+    //     pasteNode();
+    //     // `CTRL + Z`撤销
+    //   } else if (e.keyCode === 90 && !optionInputHasFocus.current) {
+    //     e.preventDefault();
+    //     returnEdit();
+    //     // `CTRL + Y`恢复
+    //   } else if (e.keyCode === 89 && !optionInputHasFocus.current) {
+    //     e.preventDefault();
+    //     resumeEdit();
+    //   }
+    // }
   }, []);
 
   const handlekeyUp = useCallback((e) => {
@@ -859,6 +943,110 @@ const Board = () => {
                   }
                   onMouseMove={changeBoxByMask}
                 >
+                  <Moveable
+                    ref={moveableRef}
+                    target={targets}
+                    elementGuidelines={elementGuidelines}
+                    // ables={[Editable]}
+                    // props={{
+                    //   editable: true,
+                    // }}
+                    snappable={true}
+                    verticalGuidelines={[0, 200, 400]}
+                    horizontalGuidelines={[0, 200, 400]}
+                    snapThreshold={5}
+                    isDisplaySnapDigit={true}
+                    snapGap={true}
+                    snapElement={true}
+                    snapVertical={true}
+                    snapHorizontal={true}
+                    snapCenter={false}
+                    snapDigit={0}
+                    draggable={true}
+                    resizable={true}
+                    onClickGroup={(e) => {
+                      selectoRef.current.clickTarget(
+                        e.inputEvent,
+                        e.inputTarget
+                      );
+                    }}
+                    onResizeStart={helper.onResizeStart}
+                    onResize={helper.onResize}
+                    onDragStart={(e) => {
+                      const target = e.target;
+
+                      if (!frameMap.has(target)) {
+                        frameMap.set(target, {
+                          translate: [0, 0],
+                        });
+                      }
+                      const frame = frameMap.get(target);
+
+                      e.set(frame.translate);
+                    }}
+                    onDrag={(e) => {
+                      const target = e.target;
+                      const frame = frameMap.get(target);
+
+                      frame.translate = e.beforeTranslate;
+                      target.style.transform = `translate(${frame.translate[0]}px, ${frame.translate[1]}px)`;
+                    }}
+                    onDragGroupStart={(e) => {
+                      e.events.forEach((ev) => {
+                        const target = ev.target;
+
+                        if (!frameMap.has(target)) {
+                          frameMap.set(target, {
+                            translate: [0, 0],
+                          });
+                        }
+                        const frame = frameMap.get(target);
+
+                        ev.set(frame.translate);
+                      });
+                    }}
+                    onDragGroup={(e) => {
+                      e.events.forEach((ev) => {
+                        const target = ev.target;
+                        const frame = frameMap.get(target);
+
+                        frame.translate = ev.beforeTranslate;
+                        target.style.transform = `translate(${frame.translate[0]}px, ${frame.translate[1]}px)`;
+                      });
+                    }}
+                  />
+                  <Selecto
+                    ref={selectoRef}
+                    dragContainer={`#${EnumId.root}`}
+                    selectableTargets={[`#${EnumId.root} .target`]}
+                    hitRate={0}
+                    selectByClick={true}
+                    selectFromInside={false}
+                    toggleContinueSelect={["shift"]}
+                    ratio={0}
+                    onDragStart={(e) => {
+                      const moveable = moveableRef.current;
+                      const target = e.inputEvent.target;
+                      if (
+                        moveable.isMoveableElement(target) ||
+                        targets.some((t) => t === target || t.contains(target))
+                      ) {
+                        e.stop();
+                      }
+                    }}
+                    onSelectEnd={(e) => {
+                      const moveable = moveableRef.current;
+                      setTargets(e.selected);
+
+                      if (e.isDragStart) {
+                        e.inputEvent.preventDefault();
+
+                        setTimeout(() => {
+                          moveable.dragStart(e.inputEvent);
+                        });
+                      }
+                    }}
+                  />
                   <Page
                     handleEventCallBack={handleEventCallBack}
                     handleClick={handleClick}

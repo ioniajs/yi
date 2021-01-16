@@ -2,51 +2,16 @@
  * @description 编辑器渲染组件
  * 根据JSON配置树编译为React组件树
  */
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import storeContext from "../context";
 import { loadAsync } from "../global";
+import { InlineEditor } from "./components/InlineEditor";
 import { record } from "./record";
-import Moveable, { MoveableManagerInterface, Renderer } from "react-moveable";
-import MoveableHelper from "moveable-helper";
 import styleBd from "./style/changeBox.less";
 
 const changeTabList = ["LT", "MT", "RT", "LM", "MM", "RM", "LB", "MB", "RB"]; // 组件容器事件蒙层类名
 
 let EventObj = {};
-
-const DimensionViewable = {
-  name: "dimensionViewable",
-  props: {},
-  events: {},
-  render(moveable) {
-    const rect = moveable.getRect();
-
-    // Add key (required)
-    // Add class prefix moveable-(required)
-    return (
-      <div
-        key={"dimension-viewer"}
-        className={"moveable-dimension"}
-        style={{
-          position: "absolute",
-          left: `${rect.width / 2}px`,
-          top: `${rect.height + 20}px`,
-          background: "#4af",
-          borderRadius: "2px",
-          padding: "2px 4px",
-          color: "white",
-          fontSize: "13px",
-          whiteSpace: "nowrap",
-          fontWeight: "bold",
-          willChange: "transform",
-          transform: "translate(-50%, 0px)",
-        }}
-      >
-        {Math.round(rect.offsetWidth)} x {Math.round(rect.offsetHeight)}
-      </div>
-    );
-  },
-};
 
 // 初次渲染每个站位容器，同时加载组件JS，并递归查找子组件重复此步骤
 const CompBox = ({ hide, el, name, style, props, children }) => {
@@ -56,22 +21,14 @@ const CompBox = ({ hide, el, name, style, props, children }) => {
     handleRightClickCallBack,
     handleHoverCallBack,
   } = EventObj;
-  const store = useContext(storeContext);
+
   const [compHasLoad, setCompHasLoad] = useState(false);
   const Comp = useRef();
 
-  const [helper] = React.useState(() => {
-    return new MoveableHelper();
-  });
-  const targetRef = useRef(null);
-  const [elementGuidelines, setElementGuidelines] = React.useState([]);
+  const [mode, setMode] = useState("read");
 
   useEffect(() => {
     loadComp();
-    setElementGuidelines([
-      document.querySelector(".container"),
-      document.querySelector(`#${el}`),
-    ]);
   }, []);
 
   const loadComp = async () => {
@@ -123,60 +80,31 @@ const CompBox = ({ hide, el, name, style, props, children }) => {
 
   // 对渲染组件包裹一层div元素，用来占位并绑定编辑器鼠标事件，以及将编辑器配置的样式渲染到视图
   return (
-    <div className="container">
-      <div
-        key={el}
-        id={el}
-        ref={targetRef}
-        className="target"
-        style={Object.assign({}, style, fillter)}
-        {...editEvent}
-      >
-        {
-          // 下载完成后再加载组件
-          !compHasLoad ? null : (
-            <>
-              <Comp.current {...props} env={window.ENV}>
-                {childrenComp}
-              </Comp.current>
-              {/* {renderEditSizeTab(name, el, style, store)} */}
-            </>
-          )
-        }
-      </div>
-      <Moveable
-        target={targetRef}
-        ables={[DimensionViewable]}
-        props={{
-          dimensionViewable: true,
-        }}
-        elementGuidelines={elementGuidelines}
-        snappable={true}
-        verticalGuidelines={[0, 200, 400]}
-        horizontalGuidelines={[0, 200, 400]}
-        snapThreshold={5}
-        isDisplaySnapDigit={true}
-        snapGap={true}
-        snapElement={true}
-        snapVertical={true}
-        snapHorizontal={true}
-        snapCenter={false}
-        snapDigit={0}
-        draggable={true}
-        throttleDrag={0}
-        startDragRotate={0}
-        throttleDragRotate={0}
-        zoom={1}
-        origin={true}
-        resizable={true}
-        rotatable={true}
-        onDragStart={helper.onDragStart}
-        onDrag={helper.onDrag}
-        onResizeStart={helper.onResizeStart}
-        onResize={helper.onResize}
-        onRotateStart={helper.onRotateStart}
-        onRotate={helper.onRotate}
-      />
+    <div
+      key={el}
+      id={el}
+      className={mode === "read" ? "target" : ""}
+      style={Object.assign({}, style, fillter)}
+      {...editEvent}
+      data-component-type={name}
+      onDoubleClick={() => {
+        setMode("edit");
+      }}
+      // onBlur={() => setMode("read")}
+    >
+      {mode === "read" ? (
+        // 下载完成后再加载组件
+        !compHasLoad ? null : (
+          <>
+            <Comp.current {...props} env={window.ENV}>
+              {childrenComp}
+            </Comp.current>
+            {/* {renderEditSizeTab(name, el, style, store)} */}
+          </>
+        )
+      ) : (
+        <InlineEditor props={props} setMode={setMode} />
+      )}
     </div>
   );
 };
