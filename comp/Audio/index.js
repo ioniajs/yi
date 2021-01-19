@@ -8,7 +8,9 @@ export default class Audio extends React.PureComponent {
     render() {
         const { src } = this.props
         return (
-            <audio src={src} className="wp-audio" controls="controls"></audio>
+            <div className="wp-audio">
+                <audio src={src}  controls="controls"></audio>
+            </div>
         )
     }
 }
