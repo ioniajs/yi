@@ -331,16 +331,17 @@ const OptionBoard = ({ optionInputHasFocus }) => {
               />
             </>
           );
-        case "inputSelect" :
+        case "inputSelect":
           return (
             <>
-            <p>{name}</p>
-            <Input
-              addonAfter={selectAfter} value={curValue || ""}
-              onFocus={() => changeOptionInputHasFocus(true)}
-              onBlur={() => changeOptionInputHasFocus(false)}
-              onChange={(e) => changeValue(e, prop, type)}
-            />
+              <p>{name}</p>
+              <Input
+                addonAfter={selectAfter}
+                value={curValue || ""}
+                onFocus={() => changeOptionInputHasFocus(true)}
+                onBlur={() => changeOptionInputHasFocus(false)}
+                onChange={(e) => changeValue(e, prop, type)}
+              />
             </>
           );
         default:
