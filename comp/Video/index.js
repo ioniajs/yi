@@ -8,7 +8,7 @@ export default class Video extends React.PureComponent {
     render() {
         const { src } = this.props;
         return (
-            <video src={src} className="wp-video"></video>
+            <video src={src} className="wp-video" controls="controls"></video>
         )
     }
 }

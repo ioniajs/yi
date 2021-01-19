@@ -138,21 +138,6 @@
         "lazy": true
       },
       "el": "wc92"
-    },
-    {
-      "name": "Audio",
-      "style": {
-        "position": "absolute",
-        "width": "336px",
-        "height": "56px",
-        "top": "220px",
-        "left": "675px"
-      },
-      "props": {
-        "src": "http://www.wantuju.com/upload/video/2021-01-12/346056e5-ddc1-47f7-865b-a6c4d99ead53.mp4",
-        "lazy": true
-      },
-      "el": "wc93"
     }
   ]
 }
