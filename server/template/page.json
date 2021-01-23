@@ -8,24 +8,6 @@
     {
       "name": "Text",
       "style": {
-        "position": "absolute",
-        "width": "200",
-        "top": "199px",
-        "left": "772px"
-      },
-      "props": {
-        "text": "默认文本1",
-        "fontSize": "48px",
-        "fontSizeUnit": "px",
-        "lineHeight": "36px",
-        "textAlign": "center",
-        "lazy": true
-      },
-      "el": "wc61"
-    },
-    {
-      "name": "Text",
-      "style": {
         "position": "relative",
         "width": "132px",
         "left": "1350px",
@@ -138,6 +120,76 @@
         "lazy": true
       },
       "el": "wc92"
+    },
+    {
+      "name": "Block",
+      "style": {
+        "position": "absolute",
+        "width": null,
+        "height": "200px",
+        "top": "156px",
+        "left": "678px"
+      },
+      "props": {
+        "lazy": true
+      },
+      "el": "wc95"
+    },
+    {
+      "name": "Footer",
+      "style": {
+        "position": "absolute",
+        "width": null,
+        "height": "200px",
+        "top": "216px",
+        "left": "748px"
+      },
+      "props": {
+        "lazy": true
+      },
+      "el": "wc96"
+    },
+    {
+      "name": "Header",
+      "style": {
+        "position": "absolute",
+        "width": null,
+        "height": "200px",
+        "top": "257px",
+        "left": "888px"
+      },
+      "props": {
+        "lazy": true
+      },
+      "el": "wc97"
+    },
+    {
+      "name": "NavBar",
+      "style": {
+        "position": "absolute",
+        "width": null,
+        "height": "200px",
+        "top": "286px",
+        "left": "881px"
+      },
+      "props": {
+        "lazy": true
+      },
+      "el": "wc99"
+    },
+    {
+      "name": "View",
+      "style": {
+        "position": "absolute",
+        "width": null,
+        "height": "120px",
+        "top": "288px",
+        "left": "905px"
+      },
+      "props": {
+        "lazy": true
+      },
+      "el": "wc100"
     }
   ]
 }

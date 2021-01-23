@@ -1,6 +1,6 @@
 {
-    "name": "一级标题",
-    "icon": "iconh1",
+    "name": "二级标题",
+    "icon": "iconh2",
     "type":"element",
     "staticProps": [
         {
@@ -69,7 +69,7 @@
         "optionWidth":"200"
     },
     "defaultProps": {
-        "text": "一级标题",
+        "text": "二级标题",
         "fontSizeUnit": "px",
         "lineHeight": "36px",
         "textAlign": "center"
