@@ -268,8 +268,40 @@ const Board = () => {
 
   // 键盘事件
   const handlekeyDown = useCallback((e) => {
-    const { choose } = stateRef.current;
-
+    const { choose , tree} = stateRef.current;
+    let num = null
+    let direction = null
+    
+    if(!optionInputHasFocus.current){
+      e.preventDefault();
+      switch(e.keyCode){
+        case 38: num = -1;direction = 'y'
+        break;
+        case 40: num = 1;direction = 'y'
+        break;
+        case 37: num = -1;direction = 'x'
+        break;
+        case 39: num = 1;direction = 'x'
+        break;
+      }
+    }
+    let newTree = JSON.parse(JSON.stringify(tree))
+    newTree.forEach((item,index)=>{
+      if(item.el === choose){
+        if(direction==='y'){
+          newTree[index].style.top = (parseInt(item.style.top) + num) + 'px'
+        }else if(direction==='x'){
+          newTree[index].style.left = (parseInt(item.style.left) + num) + 'px'
+        }
+        return
+      }
+    })
+    if(num !== null){
+      dispatch({
+        type: "UPDATE_TREE",
+        payload: newTree,
+      });
+    }
     // `空格`键
     // if (e.keyCode === 32 && !optionInputHasFocus.current) {
     //   e.preventDefault();
