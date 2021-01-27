@@ -271,9 +271,7 @@ const Board = () => {
     const { choose , tree} = stateRef.current;
     let num = null
     let direction = null
-    
     if(!optionInputHasFocus.current){
-      e.preventDefault();
       switch(e.keyCode){
         case 38: num = -1;direction = 'y'
         break;
@@ -297,6 +295,7 @@ const Board = () => {
       }
     })
     if(num !== null){
+      e.preventDefault();
       dispatch({
         type: "UPDATE_TREE",
         payload: newTree,
