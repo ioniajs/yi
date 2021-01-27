@@ -190,6 +190,20 @@
         "lazy": true
       },
       "el": "wc100"
+    },
+    {
+      "name": "Table",
+      "style": {
+        "position": "absolute",
+        "width": null,
+        "min-height": "200px",
+        "top": "311px",
+        "left": "746px"
+      },
+      "props": {
+        "lazy": true
+      },
+      "el": "wc101"
     }
   ]
 }
